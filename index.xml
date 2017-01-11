@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Autodidact by nature</title>
+    <link>http://crisci.io/</link>
+    <description>Recent content on Autodidact by nature</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
+    <atom:link href="http://crisci.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Customized Widgets</title>
+      <link>http://crisci.io/services/widgets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://crisci.io/services/widgets/</guid>
+      <description>&lt;p&gt;We specialize in bespoke widgets, built to your specification.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The mind behind this blog</title>
+      <link>http://crisci.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://crisci.io/about/</guid>
+      <description>
+
+&lt;h3 id=&#34;a-brief-history-of-my-time-so-far&#34;&gt;A brief history of my time so far&lt;/h3&gt;
+
+&lt;p&gt;My name is Laurent Crisci, autodidact by nature and always curious about the inner workings of our world.&lt;/p&gt;
+
+&lt;p&gt;I was born and mostly educated in France and having experienced the italian life for 10 years, I decided to move to England through a job opportunity since February 2010.&lt;/p&gt;
+
+&lt;p&gt;I have been using Linux systems since 2001 as a mean to be closer to the Operating System and have a better understanding on what is really going on.
+Whenever i meet something of interest, i try to understand it and can quickly end up spending a good amount of time on the subject.&lt;/p&gt;
+
+&lt;p&gt;For me it is essential to understand how things work in life as there is no magic and mostly everything has an explanation to date.
+Life is a beautiful and mysterious thing that is full of surprise and continuous learning/inquiring is required to be able to discover new things which could make it better.&lt;/p&gt;
+
+&lt;p&gt;With this blog i would like to share some of my knowledge and the ongoing process that i go through to acquire new one.
+I will share with you the books that i&amp;rsquo;m reading and what i thought about them, the new technologies that i have been studying and playing with and various other topics.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-selection-of-my-current-interests&#34;&gt;A selection of my current interests&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;li&gt;Infrastructure As Code / Continuous Delivery&lt;/li&gt;
+&lt;li&gt;Cloud computing&lt;/li&gt;
+&lt;li&gt;Machine Learning&lt;/li&gt;
+&lt;li&gt;Philosophy&lt;/li&gt;
+&lt;li&gt;History&lt;/li&gt;
+&lt;li&gt;Science&lt;/li&gt;
+&lt;li&gt;Fitness and well-being&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
