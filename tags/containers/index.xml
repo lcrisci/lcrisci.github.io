@@ -100,8 +100,8 @@ minikube status
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You current cluster should now be set on your local Minikube&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
-*         minikube   minikube   minikube
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;*         minikube   minikube   minikube&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now let&amp;rsquo;s verify the client/server versions&lt;/p&gt;
@@ -109,8 +109,8 @@ minikube status
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;Client Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;5&amp;quot;, GitVersion:&amp;quot;v1.5.1&amp;quot;, GitCommit:&amp;quot;82450d03cb057bab0950214ef122b67c83fb11df&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;2016-12-14T00:57:05Z&amp;quot;, GoVersion:&amp;quot;go1.7.4&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;darwin/amd64&amp;quot;}
-Server Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;5&amp;quot;, GitVersion:&amp;quot;v1.5.1&amp;quot;, GitCommit:&amp;quot;82450d03cb057bab0950214ef122b67c83fb11df&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;1970-01-01T00:00:00Z&amp;quot;, GoVersion:&amp;quot;go1.7.1&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;linux/amd64&amp;quot;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Client Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;5&amp;quot;, GitVersion:&amp;quot;v1.5.1&amp;quot;, GitCommit:&amp;quot;82450d03cb057bab0950214ef122b67c83fb11df&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;2016-12-14T00:57:05Z&amp;quot;, GoVersion:&amp;quot;go1.7.4&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;darwin/amd64&amp;quot;}&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;Server Version: version.Info{Major:&amp;quot;1&amp;quot;, Minor:&amp;quot;5&amp;quot;, GitVersion:&amp;quot;v1.5.1&amp;quot;, GitCommit:&amp;quot;82450d03cb057bab0950214ef122b67c83fb11df&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;, BuildDate:&amp;quot;1970-01-01T00:00:00Z&amp;quot;, GoVersion:&amp;quot;go1.7.1&amp;quot;, Compiler:&amp;quot;gc&amp;quot;, Platform:&amp;quot;linux/amd64&amp;quot;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
@@ -121,19 +121,19 @@ kubectl get all
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;NAME                        READY     STATUS    RESTARTS   AGE
-po/nginx-3449338310-43sk1   1/1       Running   0          1m
-po/nginx-3449338310-hbp5s   1/1       Running   0          1m
-po/nginx-3449338310-lz06n   1/1       Running   0          1m
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;NAME                        READY     STATUS    RESTARTS   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;po/nginx-3449338310-43sk1   1/1       Running   0          1m&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;po/nginx-3449338310-hbp5s   1/1       Running   0          1m&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;po/nginx-3449338310-lz06n   1/1       Running   0          1m&lt;/span&gt;
 
-NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-svc/kubernetes   10.0.0.1     &amp;lt;none&amp;gt;        443/TCP   22m
+&lt;span class=&#34;go&#34;&gt;NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;svc/kubernetes   10.0.0.1     &amp;lt;none&amp;gt;        443/TCP   22m&lt;/span&gt;
 
-NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deploy/nginx   3         3         3            3           1m
+&lt;span class=&#34;go&#34;&gt;NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;deploy/nginx   3         3         3            3           1m&lt;/span&gt;
 
-NAME                  DESIRED   CURRENT   READY     AGE
-rs/nginx-3449338310   3         3         3         1m
+&lt;span class=&#34;go&#34;&gt;NAME                  DESIRED   CURRENT   READY     AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;rs/nginx-3449338310   3         3         3         1m&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You now have created a deployment containing a pod named nginx which itself uses the nginx Docker image
@@ -148,10 +148,10 @@ It listens on port 80 and makes sure that 3 of these pods run at any time&lt;/p&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;NAME                     READY     STATUS    RESTARTS   AGE
-nginx-3449338310-43sk1   1/1       Running   0          11m
-nginx-3449338310-hbp5s   1/1       Running   0          11m
-nginx-3449338310-q7rrp   1/1       Running   0          5s
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;NAME                     READY     STATUS    RESTARTS   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;nginx-3449338310-43sk1   1/1       Running   0          11m&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;nginx-3449338310-hbp5s   1/1       Running   0          11m&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;nginx-3449338310-q7rrp   1/1       Running   0          5s&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Nice! As soon as we killed the container, we had Kubernetes restart another one as expected&lt;/p&gt;
@@ -162,9 +162,12 @@ nginx-3449338310-q7rrp   1/1       Running   0          5s
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;kubectl get pods
-NAME                     READY     STATUS    RESTARTS   AGE
-nginx-3449338310-43sk1   1/1       Running   0          15m
-nginx-3449338310-hbp5s   1/1       Running   0          15m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;NAME                     READY     STATUS    RESTARTS   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;nginx-3449338310-43sk1   1/1       Running   0          15m&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;nginx-3449338310-hbp5s   1/1       Running   0          15m&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
@@ -200,8 +203,8 @@ This is the tool that i used to do continuous delivery on Kubernetes in my last 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You should get the following output:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;Client: &amp;amp;version.Version{SemVer:&amp;quot;v2.1.3&amp;quot;, GitCommit:&amp;quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;}
-Server: &amp;amp;version.Version{SemVer:&amp;quot;v2.1.3&amp;quot;, GitCommit:&amp;quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;Client: &amp;amp;version.Version{SemVer:&amp;quot;v2.1.3&amp;quot;, GitCommit:&amp;quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;}&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;Server: &amp;amp;version.Version{SemVer:&amp;quot;v2.1.3&amp;quot;, GitCommit:&amp;quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&amp;quot;, GitTreeState:&amp;quot;clean&amp;quot;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Let&amp;rsquo;s search for the Jenkins package to install:&lt;/p&gt;
@@ -209,8 +212,8 @@ Server: &amp;amp;version.Version{SemVer:&amp;quot;v2.1.3&amp;quot;, GitCommit:&a
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;NAME          	VERSION	DESCRIPTION
-stable/jenkins	0.1.8  	A Jenkins Helm chart for Kubernetes.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;NAME          	VERSION	DESCRIPTION&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;stable/jenkins	0.1.8  	A Jenkins Helm chart for Kubernetes.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Let&amp;rsquo;s install the chart inside Minikube:&lt;/p&gt;
@@ -224,47 +227,47 @@ stable/jenkins	0.1.8  	A Jenkins Helm chart for Kubernetes.
 &lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/charts/pull/530&#34;&gt;https://github.com/kubernetes/charts/pull/530&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This is the output of my installation:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;NAME:   ironic-donkey
-LAST DEPLOYED: Tue Jan 31 06:40:50 2017
-NAMESPACE: default
-STATUS: DEPLOYED
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;NAME:   ironic-donkey&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;LAST DEPLOYED: Tue Jan 31 06:40:50 2017&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAMESPACE: default&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;STATUS: DEPLOYED&lt;/span&gt;
 
-RESOURCES:
-==&amp;gt; v1/Secret
-NAME                    TYPE      DATA      AGE
-ironic-donkey-jenkins   Opaque    2         1s
+&lt;span class=&#34;go&#34;&gt;RESOURCES:&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;==&amp;gt; v1/Secret&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAME                    TYPE      DATA      AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;ironic-donkey-jenkins   Opaque    2         1s&lt;/span&gt;
 
-==&amp;gt; v1/ConfigMap
-NAME                    DATA      AGE
-ironic-donkey-jenkins   1         1s
+&lt;span class=&#34;go&#34;&gt;==&amp;gt; v1/ConfigMap&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAME                    DATA      AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;ironic-donkey-jenkins   1         1s&lt;/span&gt;
 
-==&amp;gt; v1/Service
-NAME                    CLUSTER-IP   EXTERNAL-IP   PORT(S)                          AGE
-ironic-donkey-jenkins   10.0.0.35    &amp;lt;pending&amp;gt;     8080:30822/TCP,50000:31757/TCP   1s
+&lt;span class=&#34;go&#34;&gt;==&amp;gt; v1/Service&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAME                    CLUSTER-IP   EXTERNAL-IP   PORT(S)                          AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;ironic-donkey-jenkins   10.0.0.35    &amp;lt;pending&amp;gt;     8080:30822/TCP,50000:31757/TCP   1s&lt;/span&gt;
 
-==&amp;gt; extensions/Deployment
-NAME                    DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-ironic-donkey-jenkins   1         1         1            0           1s
+&lt;span class=&#34;go&#34;&gt;==&amp;gt; extensions/Deployment&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAME                    DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;ironic-donkey-jenkins   1         1         1            0           1s&lt;/span&gt;
 
-==&amp;gt; v1/PersistentVolumeClaim
-NAME                    STATUS    VOLUME                                     CAPACITY   ACCESSMODES   AGE
-ironic-donkey-jenkins   Bound     pvc-34d6771b-e780-11e6-a309-da2274021699   8Gi        RWO           1s
+&lt;span class=&#34;go&#34;&gt;==&amp;gt; v1/PersistentVolumeClaim&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;NAME                    STATUS    VOLUME                                     CAPACITY   ACCESSMODES   AGE&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;ironic-donkey-jenkins   Bound     pvc-34d6771b-e780-11e6-a309-da2274021699   8Gi        RWO           1s&lt;/span&gt;
 
 
-NOTES:
-1. Get your &amp;#39;admin&amp;#39; user password by running:
-  printf $(kubectl get secret --namespace default ironic-donkey-jenkins -o jsonpath=&amp;quot;{.data.jenkins-admin-password}&amp;quot; | base64 --decode);echo
+&lt;span class=&#34;go&#34;&gt;NOTES:&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;1. Get your &amp;#39;admin&amp;#39; user password by running:&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;  printf $(kubectl get secret --namespace default ironic-donkey-jenkins -o jsonpath=&amp;quot;{.data.jenkins-admin-password}&amp;quot; | base64 --decode);echo&lt;/span&gt;
 
-2. Get the Jenkins URL to visit by running these commands in the same shell:
-  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-        You can watch the status of by running &amp;#39;kubectl get svc --namespace default -w ironic-donkey-jenkins&amp;#39;
-  export SERVICE_IP=$(kubectl get svc ironic-donkey-jenkins --namespace default --template &amp;quot;{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}&amp;quot;)
-  echo http://$SERVICE_IP:8080/login
+&lt;span class=&#34;go&#34;&gt;2. Get the Jenkins URL to visit by running these commands in the same shell:&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;  NOTE: It may take a few minutes for the LoadBalancer IP to be available.&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;        You can watch the status of by running &amp;#39;kubectl get svc --namespace default -w ironic-donkey-jenkins&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;  export SERVICE_IP=$(kubectl get svc ironic-donkey-jenkins --namespace default --template &amp;quot;{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}&amp;quot;)&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;  echo http://$SERVICE_IP:8080/login&lt;/span&gt;
 
-3. Login with the password from step 1 and the username: admin
+&lt;span class=&#34;go&#34;&gt;3. Login with the password from step 1 and the username: admin&lt;/span&gt;
 
-For more information on running Jenkins on Kubernetes, visit:
-https://cloud.google.com/solutions/jenkins-on-container-engine
+&lt;span class=&#34;go&#34;&gt;For more information on running Jenkins on Kubernetes, visit:&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;https://cloud.google.com/solutions/jenkins-on-container-engine&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
@@ -281,8 +284,8 @@ Another cool feature of the chart packaging comes with the &lt;strong&gt;NOTES&l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span&gt;&lt;/span&gt;http://192.168.64.9:30822
-http://192.168.64.9:31757
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&#34;go&#34;&gt;http://192.168.64.9:30822&lt;/span&gt;
+&lt;span class=&#34;go&#34;&gt;http://192.168.64.9:31757&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;

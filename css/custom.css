@@ -1,8 +1,22 @@
-.highlight { color: #56a69d; background-color: #07100b; border-radius: 5px; border-style: solid; border-color: #07100b}
+.highlight .language-text { display: block; overflow:scroll; color: #56a69d; background-color: #07100b; border-radius: 25px; padding-left: 10px; }
+/*.highlight .language-console { display: block; overflow:scroll; color: #56a69d; background-color: #07100b; border: 5px solid #D9A63B; border-radius: 25px; padding-left: 10px; }*/
+.highlight .language-console { display: block; overflow:scroll; color: #56a69d; background-color: #07100b; border: 4px solid #cd853f; border-radius: 25px; padding-left: 10px; }
 
 h1 {
  color: #990033;
 }
 h2 {
  color: #00007F;
+}
+
+p {
+  font-size: large;
+}
+
+#toc ul { 
+  list-style-type: none; 
+}
+
+#toc ul ul { 
+  list-style-type: disc; 
 }
