@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A quick guide on how to get started">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.81.0" />
 
   <title>An Introduction to Kubernetes &middot; Autodidact by nature</title>
 
@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://crisci.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://crisci.io/css/side-menu.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="http://crisci.io/css/blackburn.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -40,13 +40,13 @@
 
   
 
-  <link rel="shortcut icon" href="http://crisci.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.crisci.io/img/favicon.ico" type="image/x-icon" />
 
   
-    <link rel="stylesheet" href="http://crisci.io/css/custom.css">
+    <link rel="stylesheet" href="https://www.crisci.io/css/custom.css">
   
   
-    <script src="http://crisci.io/js/my.js"></script>
+    <script src="https://www.crisci.io/js/my.js"></script>
   
 
 </head>
@@ -63,7 +63,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="http://crisci.io/">Laurent Crisci</a>
+  <a class="pure-menu-heading brand" href="https://www.crisci.io/">Laurent Crisci</a>
 
 
   <div class="pure-menu">
@@ -71,25 +71,25 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="https://www.crisci.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="https://www.crisci.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
       
         <li class="pure-menu-item">
           <a class="pure-menu-link" href="mailto:laurent@crisci.io"><i class='fa fa-envelope fa-fw'></i>Mail</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.crisci.io/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
@@ -228,11 +228,11 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/kubernetes">kubernetes</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/kubernetes">kubernetes</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/devops">devops</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/devops">devops</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/containers">containers</a>
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/containers">containers</a>
     
   </div>
   
@@ -240,300 +240,205 @@
 
 </div>
 
-  
-
-<p>In this post, i would like to introduce you to Kubernetes which is the most popular container scheduler these days.<br>
-I will show you how to install a few important tools that you should be aware of and use in your day to day operations while managing your Kubernetes cluster(s).<br>
-I will not go into great details but just give you an idea on what each tool does. More details and advanced use will come in my next posts.<br></p>
-
+  <p>In this post, i would like to introduce you to Kubernetes which is the most popular container scheduler these days.<!-- raw HTML omitted -->
+I will show you how to install a few important tools that you should be aware of and use in your day to day operations while managing your Kubernetes cluster(s).<!-- raw HTML omitted -->
+I will not go into great details but just give you an idea on what each tool does. More details and advanced use will come in my next posts.<!-- raw HTML omitted --></p>
 <p>I will cover the following topics:</p>
-
 <ul>
 <li>Creating your own local Kubernetes installation with <strong>Minikube</strong></li>
 <li>Administering your Kubernetes cluster(s) with <strong>kubectl</strong></li>
 <li>Doing Continuous Delivery with <strong>Helm</strong></li>
 </ul>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <p>I&rsquo;m running all the commands below from my MacOS ( little differences on Linux, good luck on Windows )</p>
-
 <h1 id="first-came-docker">First came Docker</h1>
-
-<p>To understand why, let&rsquo;s first talk about Docker which is the most popular container solution these days.<br></p>
-
+<p>To understand why, let&rsquo;s first talk about Docker which is the most popular container solution these days.<!-- raw HTML omitted --></p>
 <p>When Docker first came around, it tackled a few issues such as:</p>
-
 <ol>
 <li>Portability
-
 <ul>
-<li>Once your code is packaged in a container, it can be installed and run anywhere in the same way from your laptop to your Company infrastructure.<br>
-No more will you hear the infamous <strong>&ldquo;It works on my machine&rdquo;<sup>TM</sup></strong> ( ok well&hellip; at least we are getting closer to this goal with Docker ).</li>
-</ul></li>
+<li>Once your code is packaged in a container, it can be installed and run anywhere in the same way from your laptop to your Company infrastructure.<!-- raw HTML omitted -->
+No more will you hear the infamous <strong>&ldquo;It works on my machine&rdquo;<!-- raw HTML omitted -->TM<!-- raw HTML omitted --></strong> ( ok well&hellip; at least we are getting closer to this goal with Docker ).</li>
+</ul>
+</li>
 <li>Packaging
-
 <ul>
-<li>Your application comes together with its dependencies and specific userspace to run it under.<br>
-You can store your containers in and retrieve them from a registry.<br>
-Technically installing a container is as easy as installing an .rpm/.deb or other packaging format.
-<br /></li>
-</ul></li>
+<li>Your application comes together with its dependencies and specific userspace to run it under.<!-- raw HTML omitted -->
+You can store your containers in and retrieve them from a registry.<!-- raw HTML omitted -->
+Technically installing a container is as easy as installing an .rpm/.deb or other packaging format.</li>
+</ul>
+</li>
 </ol>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="then-came-kubernetes">Then came Kubernetes</h1>
-
 <p>Kubernetes was developed by Google and open sourced in 2014 as a solution to manage and distribute your containers workloads:</p>
-
 <ol>
-<li>Kubernetes was inspired by Borg which is <a href="https://research.google.com/pubs/pub43438.html">Google internal cluster manager solution</a>.<br>
- Google has one of, if not the biggest infrastructure in the world and they have a reputation for advanced engineering.<br></li>
+<li>Kubernetes was inspired by Borg which is <a href="https://research.google.com/pubs/pub43438.html">Google internal cluster manager solution</a>.<!-- raw HTML omitted -->
+Google has one of, if not the biggest infrastructure in the world and they have a reputation for advanced engineering.<!-- raw HTML omitted --></li>
 <li>Kubernetes supports multiple providers such as <a href="https://github.com/kubernetes/kubernetes/tree/master/pkg/cloudprovider/providers">AWS,GCP,Openstack,Azure and more</a>
- This is one of the reasons why Kubernetes is beautiful for me.It would definitely be easier to move between different cloud providers when you already have all your stuff<br>
- running inside containers in your Kubernetes cluster(s) although to be honest it&rsquo;s also because you started using containers for your applications.</li>
-<li>It has a huge community behind it and an <a href="https://kubernetes.io/docs/">amazing and extensive documentation</a>.<br>
- It&rsquo;s also very popular on the markets (job offers) and that&rsquo;s always a good sign for me.</li>
+This is one of the reasons why Kubernetes is beautiful for me.It would definitely be easier to move between different cloud providers when you already have all your stuff<!-- raw HTML omitted -->
+running inside containers in your Kubernetes cluster(s) although to be honest it&rsquo;s also because you started using containers for your applications.</li>
+<li>It has a huge community behind it and an <a href="https://kubernetes.io/docs/">amazing and extensive documentation</a>.<!-- raw HTML omitted -->
+It&rsquo;s also very popular on the markets (job offers) and that&rsquo;s always a good sign for me.</li>
 </ol>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="install-kubectl">Install kubectl</h1>
-
 <p>kubectl is the tool that we use to administer our kubernetes cluster(s) from the cli:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>curl -Lo kubectl http://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/darwin/amd64/kubectl &amp;&amp; chmod +x kubectl &amp;&amp; sudo mv kubectl /usr/local/bin/
-</code></pre></div>
-
-<p><br></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">$ curl -Lo kubectl http://storage.googleapis.com/kubernetes-release/release/v1.5.1/bin/darwin/amd64/kubectl &amp;&amp; chmod +x kubectl &amp;&amp; sudo mv kubectl /usr/local/bin/
+</code></pre></div><!-- raw HTML omitted -->
 <h1 id="here-comes-the-minikube">Here comes the Minikube</h1>
-
 <p>We will first need to install <strong>docker-machine-driver-xhyve</strong> to be able to run Minikube natively on our MacOS without using VirtualBox: <a href="https://github.com/zchee/docker-machine-driver-xhyve">https://github.com/zchee/docker-machine-driver-xhyve</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>brew upgrade docker-machine-driver-xhyve
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">brew upgrade docker-machine-driver-xhyve
 sudo chown root:wheel /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 sudo chmod u+s /usr/local/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-</code></pre></div>
-
-<p>Once we are done installing xhyve, we can go ahead and start Minikube locally</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>minikube start --vm-driver xhyve
+</code></pre></div><p>Once we are done installing xhyve, we can go ahead and start Minikube locally</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">minikube start --vm-driver xhyve
 minikube status
-</code></pre></div>
-
-<p>You should now have Minikube setup as the default context/cluster</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl get-contexts
-</code></pre></div>
-
-<p>You current cluster should now be set on your local Minikube</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE</span>
-<span class="go">*         minikube   minikube   minikube</span>
-</code></pre></div>
-
-<p>Now let&rsquo;s verify the client/server versions</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl version
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Client Version: version.Info{Major:&quot;1&quot;, Minor:&quot;5&quot;, GitVersion:&quot;v1.5.1&quot;, GitCommit:&quot;82450d03cb057bab0950214ef122b67c83fb11df&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2016-12-14T00:57:05Z&quot;, GoVersion:&quot;go1.7.4&quot;, Compiler:&quot;gc&quot;, Platform:&quot;darwin/amd64&quot;}</span>
-<span class="go">Server Version: version.Info{Major:&quot;1&quot;, Minor:&quot;5&quot;, GitVersion:&quot;v1.5.1&quot;, GitCommit:&quot;82450d03cb057bab0950214ef122b67c83fb11df&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;1970-01-01T00:00:00Z&quot;, GoVersion:&quot;go1.7.1&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;}</span>
-</code></pre></div>
-
-<p><br></p>
-
+</code></pre></div><p>You should now have Minikube setup as the default context/cluster</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl get-contexts
+</code></pre></div><p>You current cluster should now be set on your local Minikube</p>
+<pre><code class="language-console" data-lang="console">CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
+*         minikube   minikube   minikube
+</code></pre><p>Now let&rsquo;s verify the client/server versions</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl version
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">Client Version: version.Info{Major:&quot;1&quot;, Minor:&quot;5&quot;, GitVersion:&quot;v1.5.1&quot;, GitCommit:&quot;82450d03cb057bab0950214ef122b67c83fb11df&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;2016-12-14T00:57:05Z&quot;, GoVersion:&quot;go1.7.4&quot;, Compiler:&quot;gc&quot;, Platform:&quot;darwin/amd64&quot;}
+Server Version: version.Info{Major:&quot;1&quot;, Minor:&quot;5&quot;, GitVersion:&quot;v1.5.1&quot;, GitCommit:&quot;82450d03cb057bab0950214ef122b67c83fb11df&quot;, GitTreeState:&quot;clean&quot;, BuildDate:&quot;1970-01-01T00:00:00Z&quot;, GoVersion:&quot;go1.7.1&quot;, Compiler:&quot;gc&quot;, Platform:&quot;linux/amd64&quot;}
+</code></pre><!-- raw HTML omitted -->
 <p>We are ready to deploy our first container ( Nginx )</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl run nginx --image=nginx --port=80 --replicas=3
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl run nginx --image=nginx --port=80 --replicas=3
 kubectl get all
-</code></pre></div>
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">NAME                        READY     STATUS    RESTARTS   AGE
+po/nginx-3449338310-43sk1   1/1       Running   0          1m
+po/nginx-3449338310-hbp5s   1/1       Running   0          1m
+po/nginx-3449338310-lz06n   1/1       Running   0          1m
 
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME                        READY     STATUS    RESTARTS   AGE</span>
-<span class="go">po/nginx-3449338310-43sk1   1/1       Running   0          1m</span>
-<span class="go">po/nginx-3449338310-hbp5s   1/1       Running   0          1m</span>
-<span class="go">po/nginx-3449338310-lz06n   1/1       Running   0          1m</span>
+NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+svc/kubernetes   10.0.0.1     &lt;none&gt;        443/TCP   22m
 
-<span class="go">NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE</span>
-<span class="go">svc/kubernetes   10.0.0.1     &lt;none&gt;        443/TCP   22m</span>
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/nginx   3         3         3            3           1m
 
-<span class="go">NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span>
-<span class="go">deploy/nginx   3         3         3            3           1m</span>
-
-<span class="go">NAME                  DESIRED   CURRENT   READY     AGE</span>
-<span class="go">rs/nginx-3449338310   3         3         3         1m</span>
-</code></pre></div>
-
-<p>You now have created a deployment containing a pod named nginx which itself uses the nginx Docker image
+NAME                  DESIRED   CURRENT   READY     AGE
+rs/nginx-3449338310   3         3         3         1m
+</code></pre><p>You now have created a deployment containing a pod named nginx which itself uses the nginx Docker image
 It listens on port 80 and makes sure that 3 of these pods run at any time</p>
-
 <p>Now let&rsquo;s delete a container and see how Kubernetes handles this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl delete po/nginx-3449338310-lz06n
-</code></pre></div>
-
-<p>Ok that&rsquo;s working as expected and now we are left with only <sup>2</sup>&frasl;<sub>3</sub> nginx containers.I&rsquo;m expecting Kubernetes to do something about it because we defined our deployment to have 3 replicas</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl get pods
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME                     READY     STATUS    RESTARTS   AGE</span>
-<span class="go">nginx-3449338310-43sk1   1/1       Running   0          11m</span>
-<span class="go">nginx-3449338310-hbp5s   1/1       Running   0          11m</span>
-<span class="go">nginx-3449338310-q7rrp   1/1       Running   0          5s</span>
-</code></pre></div>
-
-<p>Nice! As soon as we killed the container, we had Kubernetes restart another one as expected</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl delete po/nginx-3449338310-lz06n
+</code></pre></div><p>Ok that&rsquo;s working as expected and now we are left with only 2/3 nginx containers.I&rsquo;m expecting Kubernetes to do something about it because we defined our deployment to have 3 replicas</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl get pods
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">NAME                     READY     STATUS    RESTARTS   AGE
+nginx-3449338310-43sk1   1/1       Running   0          11m
+nginx-3449338310-hbp5s   1/1       Running   0          11m
+nginx-3449338310-q7rrp   1/1       Running   0          5s
+</code></pre><p>Nice! As soon as we killed the container, we had Kubernetes restart another one as expected</p>
 <p>Now for the record, if you want to scale down you can run the following command ( obviously also work for scale up ):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl scale --current-replicas=3 --replicas=2 deployment/nginx
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl get pods
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME                     READY     STATUS    RESTARTS   AGE</span>
-<span class="go">nginx-3449338310-43sk1   1/1       Running   0          15m</span>
-<span class="go">nginx-3449338310-hbp5s   1/1       Running   0          15m</span>
-</code></pre></div>
-
-<p><br></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl scale --current-replicas=3 --replicas=2 deployment/nginx
+</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl get pods
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">NAME                     READY     STATUS    RESTARTS   AGE
+nginx-3449338310-43sk1   1/1       Running   0          15m
+nginx-3449338310-hbp5s   1/1       Running   0          15m
+</code></pre><!-- raw HTML omitted -->
 <p>You can also connect to the Kubernetes dashboard as follows:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>minikube dashboard
-</code></pre></div>
-
-<p><br></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">minikube dashboard
+</code></pre></div><!-- raw HTML omitted -->
 <h1 id="a-nightmare-on-helm-street">A nightmare on Helm street</h1>
-
-<p>Helm is an awesome tool used to install/upgrade your software defined inside its own chart.<br>
+<p>Helm is an awesome tool used to install/upgrade your software defined inside its own chart.<!-- raw HTML omitted -->
 This is the tool that i used to do continuous delivery on Kubernetes in my last project.It basically has 2 parts:</p>
-
 <ul>
 <li>Helm which is the client-side tool which parse a chart directory, read your defined global and environment values and generate deployment/services/secrets/etc resources files and pass them to Tiller which is running inside your Kubernetes.</li>
 <li>tiller is itself the software which will run internal Kubernetes commands based on your defined resources.It will also keep tracks on the various Helm deployments which will allow you to do various operations such as upgrades/rollbacks/etc</li>
 </ul>
-
 <p>I will now demonstrate a quick Jenkins master deployment via Helm.</p>
-
 <p>First we need to install the Helm client on our laptop:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>curl http://storage.googleapis.com/kubernetes-helm/helm-v2.1.3-darwin-amd64.tar.gz | tar -xzf - -C /usr/local/bin/ --strip-components=1 darwin-amd64/helm
-</code></pre></div>
-
-<p>Now we run Helm for the first time to create our initial local config and deploy Tiller inside Kubernetes:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>helm init
-</code></pre></div>
-
-<p>Give it a good 30 seconds depending on your internet connection and run the following command:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>helm version
-</code></pre></div>
-
-<p>You should get the following output:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Client: &amp;version.Version{SemVer:&quot;v2.1.3&quot;, GitCommit:&quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&quot;, GitTreeState:&quot;clean&quot;}</span>
-<span class="go">Server: &amp;version.Version{SemVer:&quot;v2.1.3&quot;, GitCommit:&quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&quot;, GitTreeState:&quot;clean&quot;}</span>
-</code></pre></div>
-
-<p>Let&rsquo;s search for the Jenkins package to install:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>helm search jenkins
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME          	VERSION	DESCRIPTION</span>
-<span class="go">stable/jenkins	0.1.8  	A Jenkins Helm chart for Kubernetes.</span>
-</code></pre></div>
-
-<p>Let&rsquo;s install the chart inside Minikube:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>helm install --set Persistence.StorageClass=default stable/jenkins
-</code></pre></div>
-
-<p><br></p>
-
-<p>Notice the extra <strong>&ndash;set Persistence.StorageClass=&ldquo;&rdquo;</strong> added which temporarily fixes the following bug:</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">curl http://storage.googleapis.com/kubernetes-helm/helm-v2.1.3-darwin-amd64.tar.gz | tar -xzf - -C /usr/local/bin/ --strip-components=1 darwin-amd64/helm
+</code></pre></div><p>Now we run Helm for the first time to create our initial local config and deploy Tiller inside Kubernetes:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">helm init
+</code></pre></div><p>Give it a good 30 seconds depending on your internet connection and run the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">helm version
+</code></pre></div><p>You should get the following output:</p>
+<pre><code class="language-console" data-lang="console">Client: &amp;version.Version{SemVer:&quot;v2.1.3&quot;, GitCommit:&quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&quot;, GitTreeState:&quot;clean&quot;}
+Server: &amp;version.Version{SemVer:&quot;v2.1.3&quot;, GitCommit:&quot;5cbc48fb305ca4bf68c26eb8d2a7eb363227e973&quot;, GitTreeState:&quot;clean&quot;}
+</code></pre><p>Let&rsquo;s search for the Jenkins package to install:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">helm search jenkins
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">NAME          	VERSION	DESCRIPTION
+stable/jenkins	0.1.8  	A Jenkins Helm chart for Kubernetes.
+</code></pre><p>Let&rsquo;s install the chart inside Minikube:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">helm install --set Persistence.StorageClass=default stable/jenkins
+</code></pre></div><!-- raw HTML omitted -->
+<p>Notice the extra <strong>&ndash;set Persistence.StorageClass=&quot;&quot;</strong> added which temporarily fixes the following bug:</p>
 <p><a href="https://github.com/kubernetes/charts/pull/530">https://github.com/kubernetes/charts/pull/530</a></p>
-
 <p>This is the output of my installation:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME:   ironic-donkey</span>
-<span class="go">LAST DEPLOYED: Tue Jan 31 06:40:50 2017</span>
-<span class="go">NAMESPACE: default</span>
-<span class="go">STATUS: DEPLOYED</span>
+<pre><code class="language-console" data-lang="console">NAME:   ironic-donkey
+LAST DEPLOYED: Tue Jan 31 06:40:50 2017
+NAMESPACE: default
+STATUS: DEPLOYED
 
-<span class="go">RESOURCES:</span>
-<span class="go">==&gt; v1/Secret</span>
-<span class="go">NAME                    TYPE      DATA      AGE</span>
-<span class="go">ironic-donkey-jenkins   Opaque    2         1s</span>
+RESOURCES:
+==&gt; v1/Secret
+NAME                    TYPE      DATA      AGE
+ironic-donkey-jenkins   Opaque    2         1s
 
-<span class="go">==&gt; v1/ConfigMap</span>
-<span class="go">NAME                    DATA      AGE</span>
-<span class="go">ironic-donkey-jenkins   1         1s</span>
+==&gt; v1/ConfigMap
+NAME                    DATA      AGE
+ironic-donkey-jenkins   1         1s
 
-<span class="go">==&gt; v1/Service</span>
-<span class="go">NAME                    CLUSTER-IP   EXTERNAL-IP   PORT(S)                          AGE</span>
-<span class="go">ironic-donkey-jenkins   10.0.0.35    &lt;pending&gt;     8080:30822/TCP,50000:31757/TCP   1s</span>
+==&gt; v1/Service
+NAME                    CLUSTER-IP   EXTERNAL-IP   PORT(S)                          AGE
+ironic-donkey-jenkins   10.0.0.35    &lt;pending&gt;     8080:30822/TCP,50000:31757/TCP   1s
 
-<span class="go">==&gt; extensions/Deployment</span>
-<span class="go">NAME                    DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span>
-<span class="go">ironic-donkey-jenkins   1         1         1            0           1s</span>
+==&gt; extensions/Deployment
+NAME                    DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+ironic-donkey-jenkins   1         1         1            0           1s
 
-<span class="go">==&gt; v1/PersistentVolumeClaim</span>
-<span class="go">NAME                    STATUS    VOLUME                                     CAPACITY   ACCESSMODES   AGE</span>
-<span class="go">ironic-donkey-jenkins   Bound     pvc-34d6771b-e780-11e6-a309-da2274021699   8Gi        RWO           1s</span>
+==&gt; v1/PersistentVolumeClaim
+NAME                    STATUS    VOLUME                                     CAPACITY   ACCESSMODES   AGE
+ironic-donkey-jenkins   Bound     pvc-34d6771b-e780-11e6-a309-da2274021699   8Gi        RWO           1s
 
 
-<span class="go">NOTES:</span>
-<span class="go">1. Get your &#39;admin&#39; user password by running:</span>
-<span class="go">  printf $(kubectl get secret --namespace default ironic-donkey-jenkins -o jsonpath=&quot;{.data.jenkins-admin-password}&quot; | base64 --decode);echo</span>
+NOTES:
+1. Get your 'admin' user password by running:
+  printf $(kubectl get secret --namespace default ironic-donkey-jenkins -o jsonpath=&quot;{.data.jenkins-admin-password}&quot; | base64 --decode);echo
 
-<span class="go">2. Get the Jenkins URL to visit by running these commands in the same shell:</span>
-<span class="go">  NOTE: It may take a few minutes for the LoadBalancer IP to be available.</span>
-<span class="go">        You can watch the status of by running &#39;kubectl get svc --namespace default -w ironic-donkey-jenkins&#39;</span>
-<span class="go">  export SERVICE_IP=$(kubectl get svc ironic-donkey-jenkins --namespace default --template &quot;{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}&quot;)</span>
-<span class="go">  echo http://$SERVICE_IP:8080/login</span>
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        You can watch the status of by running 'kubectl get svc --namespace default -w ironic-donkey-jenkins'
+  export SERVICE_IP=$(kubectl get svc ironic-donkey-jenkins --namespace default --template &quot;{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}&quot;)
+  echo http://$SERVICE_IP:8080/login
 
-<span class="go">3. Login with the password from step 1 and the username: admin</span>
+3. Login with the password from step 1 and the username: admin
 
-<span class="go">For more information on running Jenkins on Kubernetes, visit:</span>
-<span class="go">https://cloud.google.com/solutions/jenkins-on-container-engine</span>
-</code></pre></div>
+For more information on running Jenkins on Kubernetes, visit:
+https://cloud.google.com/solutions/jenkins-on-container-engine
 
-<p><br></p>
-
-<p>We can see that the Jenkins chart defined some Kubernetes resources which are needed for the Jenkins master to run inside Kubernetes.<br>
+</code></pre><!-- raw HTML omitted -->
+<p>We can see that the Jenkins chart defined some Kubernetes resources which are needed for the Jenkins master to run inside Kubernetes.<!-- raw HTML omitted -->
 Another cool feature of the chart packaging comes with the <strong>NOTES</strong> output which gives you useful informations on how to start using the deployed service.</p>
-
 <p>Don&rsquo;t forget to run step <strong>1.</strong> from the <strong>NOTES</strong> as we will need the password to login as <strong>admin</strong>.</p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <p>Let&rsquo;s now grab the Jenkins service url:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>minikube service ironic-donkey-jenkins --url
-</code></pre></div>
-
-<p><br></p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">http://192.168.64.9:30822</span>
-<span class="go">http://192.168.64.9:31757</span>
-</code></pre></div>
-
-<p><br></p>
-
-<p>You will get 2 urls and you should use the first one which will be your master url ( the second being your agent )<br>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">minikube service ironic-donkey-jenkins --url
+</code></pre></div><!-- raw HTML omitted -->
+<pre><code class="language-console" data-lang="console">http://192.168.64.9:30822
+http://192.168.64.9:31757
+</code></pre><!-- raw HTML omitted -->
+<p>You will get 2 urls and you should use the first one which will be your master url ( the second being your agent )<!-- raw HTML omitted -->
 Open your browser using the first url and you should be able to login as admin with the password that you grabbed above.</p>
-
 <p>Have a look at the <a href="https://github.com/kubernetes/charts/tree/master/stable/jenkins">Jenkins chart&rsquo;s github repository</a> to have an idea of what a chart is made of.</p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="summary">Summary</h1>
-
-<p>You now have a locally installed Minikube which you can use to run your kubernetes tests before deploying it on your real cluster.<br>
-While this post was simple and straightforward, deploying and maintaining Kubernetes clusters in different environments/clouds is not as simple and straightforward.<br><br>
-Many companies already offer &ldquo;Managed Kubernetes&rdquo; solutions to offload the burden of having to do so but we are engineers and we also love to design/implement/troubleshoot/maintain our stuff.<br>
+<p>You now have a locally installed Minikube which you can use to run your kubernetes tests before deploying it on your real cluster.<!-- raw HTML omitted -->
+While this post was simple and straightforward, deploying and maintaining Kubernetes clusters in different environments/clouds is not as simple and straightforward.<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Many companies already offer &ldquo;Managed Kubernetes&rdquo; solutions to offload the burden of having to do so but we are engineers and we also love to design/implement/troubleshoot/maintain our stuff.<!-- raw HTML omitted -->
 Expect more posts to cover some Kubernetes components in details as my contribution to this amazing community who helped me a lot in the past months.</p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="resources">Resources</h1>
-
-<p>Slack: <a href="http://slack.k8s.io/">http://slack.k8s.io/</a><br>
+<p>Slack: <a href="http://slack.k8s.io/">http://slack.k8s.io/</a><!-- raw HTML omitted -->
 Github: <a href="https://github.com/kubernetes">https://github.com/kubernetes</a></p>
 
 
@@ -541,8 +446,14 @@ Github: <a href="https://github.com/kubernetes">https://github.com/kubernetes</a
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
+    <a href="https://www.crisci.io/post/why-golang-is-so-popular/"><i class="fa fa-chevron-left"></i></a>
+    
   </div>
   <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://www.crisci.io/post/why-golang-is-so-popular/">An Introduction to Kubernetes</a>
+    </nav>
     
   </div>
   <div class="pure-u-2-24">
@@ -551,13 +462,13 @@ Github: <a href="https://github.com/kubernetes">https://github.com/kubernetes</a
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="http://crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/">Using kops to build your kubernetes cluster</a>
+      <a href="https://www.crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/">Using kops to build your kubernetes cluster</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="http://crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/"><i class="fa fa-chevron-right"></i></a>
+    <a href="https://www.crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -588,7 +499,7 @@ Github: <a href="https://github.com/kubernetes">https://github.com/kubernetes</a
 
 </div>
 </div>
-<script src="http://crisci.io/js/ui.js"></script>
+<script src="https://www.crisci.io/js/ui.js"></script>
 
 
 <script>

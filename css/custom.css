@@ -1,23 +1,35 @@
 .highlight .language-text { 
   display: block; 
-  overflow:scroll; 
+  overflow: scroll; 
   color: #56a69d; 
-  background-color: #1E1E1E; 
-  padding-left: 10px; 
+  border-radius: 10px;
+  background-color: #1e1e1e; 
+  padding: 15px; 
   font-style: 13px;
   font-family: "Courier New", Monaco, Menlo, Consolas, monospace;
 }
 
+.highlight .language-text::first-letter {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select:none;
+  color: red;
+}
+
 .highlight .language-console { 
   display: block; 
-  overflow:scroll; 
+  overflow: scroll; 
   color: #56a69d; 
-  background-color: #1E1E1E; 
-  border: 2px solid #cd853f;
-  border-left: 4px solid #cd853f; 
-  padding-left: 10px; 
+  background-color: #1e1e1e; 
+  border-left: 5px solid #a2957b; 
+  padding: 15px; 
   font-style: 13px; 
   font-family: "Courier New", Monaco, Menlo, Consolas, monospace; 
+}
+
+body {
+  color: #333;
 }
 
 h1 {

@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="How to build your first kubernetes cluster on AWS">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.81.0" />
 
   <title>Using kops to build your kubernetes cluster &middot; Autodidact by nature</title>
 
@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="http://crisci.io/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="http://crisci.io/css/side-menu.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="http://crisci.io/css/blackburn.css">
+  <link rel="stylesheet" href="https://www.crisci.io/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -40,13 +40,13 @@
 
   
 
-  <link rel="shortcut icon" href="http://crisci.io/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.crisci.io/img/favicon.ico" type="image/x-icon" />
 
   
-    <link rel="stylesheet" href="http://crisci.io/css/custom.css">
+    <link rel="stylesheet" href="https://www.crisci.io/css/custom.css">
   
   
-    <script src="http://crisci.io/js/my.js"></script>
+    <script src="https://www.crisci.io/js/my.js"></script>
   
 
 </head>
@@ -63,7 +63,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="http://crisci.io/">Laurent Crisci</a>
+  <a class="pure-menu-heading brand" href="https://www.crisci.io/">Laurent Crisci</a>
 
 
   <div class="pure-menu">
@@ -71,25 +71,25 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/"><i class='fa fa-home fa-fw'></i>Home</a>
+          <a class="pure-menu-link" href="https://www.crisci.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="http://crisci.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="https://www.crisci.io/about/"><i class='fa fa-user fa-fw'></i>About</a>
       
         </li>
       
       
         <li class="pure-menu-item">
           <a class="pure-menu-link" href="mailto:laurent@crisci.io"><i class='fa fa-envelope fa-fw'></i>Mail</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://www.crisci.io/"><i class='fa fa-home fa-fw'></i>Home</a>
       
         </li>
       
@@ -228,11 +228,11 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/kubernetes">kubernetes</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/kubernetes">kubernetes</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/kops">kops</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/kops">kops</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="http://crisci.io/tags/devops">devops</a>
+      <a class="post-taxonomy-tag" href="https://www.crisci.io/tags/devops">devops</a>
     
   </div>
   
@@ -240,305 +240,287 @@
 
 </div>
 
-  
-
-<p>kops is a tool used to deploy Kubernetes clusters on GCE/AWS that has recently gained more popularity.<br>
-It&rsquo;s quickly being developed and keeping up with the latest Kubernetes updates/features.<br>
-There currently is only support for AWS/GCE but more platforms are planned to be supported.<br></p>
-
+  <p>kops is a tool used to deploy Kubernetes clusters on GCE/AWS that has recently gained more popularity.<!-- raw HTML omitted -->
+It&rsquo;s quickly being developed and keeping up with the latest Kubernetes updates/features.<!-- raw HTML omitted -->
+There currently is only support for AWS/GCE but more platforms are planned to be supported.<!-- raw HTML omitted --></p>
 <p>I will cover the following topics:</p>
-
 <ul>
 <li>Creating your own AWS Kubernetes installation with kops</li>
 <li>A look at what exactly is kops creating/storing inside its s3 bucket</li>
 <li>Adding a new worker node inside your cluster</li>
 </ul>
-
-<p><br></p>
-
-<p>You will need to have an existing AWS account with Access Keys setup.<br>
+<!-- raw HTML omitted -->
+<p>You will need to have an existing AWS account with Access Keys setup.<!-- raw HTML omitted -->
 You will also need to install kubectl: <a href="https://kubernetes.io/docs/user-guide/prereqs/">https://kubernetes.io/docs/user-guide/prereqs/</a></p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="install-kops">Install kops</h1>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>curl -Lo kops-darwin-amd64 https://github.com/kubernetes/kops/releases/download/1.5.1/kops-darwin-amd64 &amp;&amp; chmod +x kops-darwin-amd64 &amp;&amp; sudo mv kops-darwin-amd64 /usr/local/bin/kops
-</code></pre></div>
-
-<p><br></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">curl -Lo kops-darwin-amd64 https://github.com/kubernetes/kops/releases/download/1.5.1/kops-darwin-amd64 &amp;&amp; chmod +x kops-darwin-amd64 &amp;&amp; sudo mv kops-darwin-amd64 /usr/local/bin/kops
+</code></pre></div><!-- raw HTML omitted -->
 <h1 id="create-your-cluster-spec">Create your Cluster Spec</h1>
-
-<p>2 environment variables to export before we are ready to create our first Kubernetes cluster:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>export KOPS_STATE_STORE=s3://crisci-kops-state
+<p>2 environment variables to export before we are ready to create our first Kubernetes cluster:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">export KOPS_STATE_STORE=s3://crisci-kops-state
 export NAME=k8s.infradev.io
-</code></pre></div>
-
-<p>The following command will create a cluster with default settings ( image/networking/instances sizes/etc )<br><br>
+</code></pre></div><p>The following command will create a cluster with default settings ( image/networking/instances sizes/etc )<!-- raw HTML omitted --><!-- raw HTML omitted -->
 Notice the <strong>&ndash;admin-access &ldquo;$(curl -s icanhazip.com)/32&rdquo;</strong> which will limit ssh/api-server connections to your source ip and not the default 0.0.0.0/0 so you don&rsquo;t end up listed on <a href="https://www.shodan.io/search?query=kubernetes">shodan.io</a></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops create cluster --admin-access &quot;$(curl -s icanhazip.com)/32&quot; --cloud aws --zones eu-west-1a --node-count 1 --ssh-public-key ~/.ssh/kops_rsa.pub ${NAME}
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">I0227 11:02:38.945869   41048 create_cluster.go:610] Using SSH public key: /Users/lcrisci/.ssh/kops_rsa.pub</span>
-<span class="go">I0227 11:02:39.658966   41048 subnets.go:183] Assigned CIDR 172.20.32.0/19 to subnet eu-west-1a</span>
-<span class="go">Previewing changes that will be made:</span>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops create cluster --admin-access &#34;$(curl -s icanhazip.com)/32&#34; --cloud aws --zones eu-west-1a --node-count 1 --ssh-public-key ~/.ssh/kops_rsa.pub ${NAME}
+</code></pre></div><pre><code class="language-console" data-lang="console">I0227 11:02:38.945869   41048 create_cluster.go:610] Using SSH public key: /Users/lcrisci/.ssh/kops_rsa.pub
+I0227 11:02:39.658966   41048 subnets.go:183] Assigned CIDR 172.20.32.0/19 to subnet eu-west-1a
+Previewing changes that will be made:
 
-<span class="go">I0227 11:02:45.089285   41048 executor.go:91] Tasks: 0 done / 55 total; 27 can run</span>
-<span class="go">I0227 11:02:46.462817   41048 executor.go:91] Tasks: 27 done / 55 total; 12 can run</span>
-<span class="go">I0227 11:02:46.782909   41048 executor.go:91] Tasks: 39 done / 55 total; 14 can run</span>
-<span class="go">I0227 11:02:47.226994   41048 executor.go:91] Tasks: 53 done / 55 total; 2 can run</span>
-<span class="go">I0227 11:02:47.331107   41048 executor.go:91] Tasks: 55 done / 55 total; 0 can run</span>
-<span class="go">Will create resources:</span>
-<span class="go">  AutoscalingGroup/master-eu-west-1a.masters.k8s.infradev.io</span>
-<span class="go">  	MinSize             	1</span>
-<span class="go">  	MaxSize             	1</span>
-<span class="go">  	Subnets             	[name:eu-west-1a.k8s.infradev.io]</span>
-<span class="go">  	Tags                	{k8s.io/role/master: 1, Name: master-eu-west-1a.masters.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}</span>
-<span class="go">  	LaunchConfiguration 	name:master-eu-west-1a.masters.k8s.infradev.io</span>
+I0227 11:02:45.089285   41048 executor.go:91] Tasks: 0 done / 55 total; 27 can run
+I0227 11:02:46.462817   41048 executor.go:91] Tasks: 27 done / 55 total; 12 can run
+I0227 11:02:46.782909   41048 executor.go:91] Tasks: 39 done / 55 total; 14 can run
+I0227 11:02:47.226994   41048 executor.go:91] Tasks: 53 done / 55 total; 2 can run
+I0227 11:02:47.331107   41048 executor.go:91] Tasks: 55 done / 55 total; 0 can run
+Will create resources:
+  AutoscalingGroup/master-eu-west-1a.masters.k8s.infradev.io
+  	MinSize             	1
+  	MaxSize             	1
+  	Subnets             	[name:eu-west-1a.k8s.infradev.io]
+  	Tags                	{k8s.io/role/master: 1, Name: master-eu-west-1a.masters.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}
+  	LaunchConfiguration 	name:master-eu-west-1a.masters.k8s.infradev.io
 
-<span class="go">  AutoscalingGroup/nodes.k8s.infradev.io</span>
-<span class="go">  	MinSize             	1</span>
-<span class="go">  	MaxSize             	1</span>
-<span class="go">  	Subnets             	[name:eu-west-1a.k8s.infradev.io]</span>
-<span class="go">  	Tags                	{k8s.io/role/node: 1, Name: nodes.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}</span>
-<span class="go">  	LaunchConfiguration 	name:nodes.k8s.infradev.io</span>
+  AutoscalingGroup/nodes.k8s.infradev.io
+  	MinSize             	1
+  	MaxSize             	1
+  	Subnets             	[name:eu-west-1a.k8s.infradev.io]
+  	Tags                	{k8s.io/role/node: 1, Name: nodes.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}
+  	LaunchConfiguration 	name:nodes.k8s.infradev.io
 
-<span class="go">  DHCPOptions/k8s.infradev.io</span>
-<span class="go">  	DomainName          	eu-west-1.compute.internal</span>
-<span class="go">  	DomainNameServers   	AmazonProvidedDNS</span>
+  DHCPOptions/k8s.infradev.io
+  	DomainName          	eu-west-1.compute.internal
+  	DomainNameServers   	AmazonProvidedDNS
 
-<span class="go">  EBSVolume/a.etcd-events.k8s.infradev.io</span>
-<span class="go">  	AvailabilityZone    	eu-west-1a</span>
-<span class="go">  	VolumeType          	gp2</span>
-<span class="go">  	SizeGB              	20</span>
-<span class="go">  	Encrypted           	false</span>
-<span class="go">  	Tags                	{Name: a.etcd-events.k8s.infradev.io, KubernetesCluster: k8s.infradev.io, k8s.io/etcd/events: a/a, k8s.io/role/master: 1}</span>
+  EBSVolume/a.etcd-events.k8s.infradev.io
+  	AvailabilityZone    	eu-west-1a
+  	VolumeType          	gp2
+  	SizeGB              	20
+  	Encrypted           	false
+  	Tags                	{Name: a.etcd-events.k8s.infradev.io, KubernetesCluster: k8s.infradev.io, k8s.io/etcd/events: a/a, k8s.io/role/master: 1}
 
-<span class="go">  EBSVolume/a.etcd-main.k8s.infradev.io</span>
-<span class="go">  	AvailabilityZone    	eu-west-1a</span>
-<span class="go">  	VolumeType          	gp2</span>
-<span class="go">  	SizeGB              	20</span>
-<span class="go">  	Encrypted           	false</span>
-<span class="go">  	Tags                	{k8s.io/etcd/main: a/a, k8s.io/role/master: 1, Name: a.etcd-main.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}</span>
+  EBSVolume/a.etcd-main.k8s.infradev.io
+  	AvailabilityZone    	eu-west-1a
+  	VolumeType          	gp2
+  	SizeGB              	20
+  	Encrypted           	false
+  	Tags                	{k8s.io/etcd/main: a/a, k8s.io/role/master: 1, Name: a.etcd-main.k8s.infradev.io, KubernetesCluster: k8s.infradev.io}
 
-<span class="go">  IAMInstanceProfile/masters.k8s.infradev.io</span>
+  IAMInstanceProfile/masters.k8s.infradev.io
 
-<span class="go">  IAMInstanceProfile/nodes.k8s.infradev.io</span>
+  IAMInstanceProfile/nodes.k8s.infradev.io
 
-<span class="go">  IAMInstanceProfileRole/masters.k8s.infradev.io</span>
-<span class="go">  	InstanceProfile     	name:masters.k8s.infradev.io id:masters.k8s.infradev.io</span>
-<span class="go">  	Role                	name:masters.k8s.infradev.io</span>
+  IAMInstanceProfileRole/masters.k8s.infradev.io
+  	InstanceProfile     	name:masters.k8s.infradev.io id:masters.k8s.infradev.io
+  	Role                	name:masters.k8s.infradev.io
 
-<span class="go">  IAMInstanceProfileRole/nodes.k8s.infradev.io</span>
-<span class="go">  	InstanceProfile     	name:nodes.k8s.infradev.io id:nodes.k8s.infradev.io</span>
-<span class="go">  	Role                	name:nodes.k8s.infradev.io</span>
+  IAMInstanceProfileRole/nodes.k8s.infradev.io
+  	InstanceProfile     	name:nodes.k8s.infradev.io id:nodes.k8s.infradev.io
+  	Role                	name:nodes.k8s.infradev.io
 
-<span class="go">  IAMRole/masters.k8s.infradev.io</span>
+  IAMRole/masters.k8s.infradev.io
 
-<span class="go">  IAMRole/nodes.k8s.infradev.io</span>
+  IAMRole/nodes.k8s.infradev.io
 
-<span class="go">  IAMRolePolicy/additional.masters.k8s.infradev.io</span>
-<span class="go">  	Role                	name:masters.k8s.infradev.io</span>
+  IAMRolePolicy/additional.masters.k8s.infradev.io
+  	Role                	name:masters.k8s.infradev.io
 
-<span class="go">  IAMRolePolicy/additional.nodes.k8s.infradev.io</span>
-<span class="go">  	Role                	name:nodes.k8s.infradev.io</span>
+  IAMRolePolicy/additional.nodes.k8s.infradev.io
+  	Role                	name:nodes.k8s.infradev.io
 
-<span class="go">  IAMRolePolicy/masters.k8s.infradev.io</span>
-<span class="go">  	Role                	name:masters.k8s.infradev.io</span>
+  IAMRolePolicy/masters.k8s.infradev.io
+  	Role                	name:masters.k8s.infradev.io
 
-<span class="go">  IAMRolePolicy/nodes.k8s.infradev.io</span>
-<span class="go">  	Role                	name:nodes.k8s.infradev.io</span>
+  IAMRolePolicy/nodes.k8s.infradev.io
+  	Role                	name:nodes.k8s.infradev.io
 
-<span class="go">  InternetGateway/k8s.infradev.io</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
-<span class="go">  	Shared              	false</span>
+  InternetGateway/k8s.infradev.io
+  	VPC                 	name:k8s.infradev.io
+  	Shared              	false
 
-<span class="go">  Keypair/kubecfg</span>
-<span class="go">  	Subject             	cn=kubecfg</span>
-<span class="go">  	Type                	client</span>
+  Keypair/kubecfg
+  	Subject             	cn=kubecfg
+  	Type                	client
 
-<span class="go">  Keypair/kubelet</span>
-<span class="go">  	Subject             	cn=kubelet</span>
-<span class="go">  	Type                	client</span>
+  Keypair/kubelet
+  	Subject             	cn=kubelet
+  	Type                	client
 
-<span class="go">  Keypair/master</span>
-<span class="go">  	Subject             	cn=kubernetes-master</span>
-<span class="go">  	Type                	server</span>
-<span class="go">  	AlternateNames      	[100.64.0.1, api.internal.k8s.infradev.io, api.k8s.infradev.io, kubernetes, kubernetes.default, kubernetes.default.svc, kubernetes.default.svc.cluster.local]</span>
+  Keypair/master
+  	Subject             	cn=kubernetes-master
+  	Type                	server
+  	AlternateNames      	[100.64.0.1, api.internal.k8s.infradev.io, api.k8s.infradev.io, kubernetes, kubernetes.default, kubernetes.default.svc, kubernetes.default.svc.cluster.local]
 
-<span class="go">  LaunchConfiguration/master-eu-west-1a.masters.k8s.infradev.io</span>
-<span class="go">  	ImageID             	kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09</span>
-<span class="go">  	InstanceType        	m3.medium</span>
-<span class="go">  	SSHKey              	name:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11 id:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11</span>
-<span class="go">  	SecurityGroups      	[name:masters.k8s.infradev.io]</span>
-<span class="go">  	AssociatePublicIP   	true</span>
-<span class="go">  	IAMInstanceProfile  	name:masters.k8s.infradev.io id:masters.k8s.infradev.io</span>
-<span class="go">  	RootVolumeSize      	20</span>
-<span class="go">  	RootVolumeType      	gp2</span>
-<span class="go">  	SpotPrice</span>
+  LaunchConfiguration/master-eu-west-1a.masters.k8s.infradev.io
+  	ImageID             	kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09
+  	InstanceType        	m3.medium
+  	SSHKey              	name:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11 id:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11
+  	SecurityGroups      	[name:masters.k8s.infradev.io]
+  	AssociatePublicIP   	true
+  	IAMInstanceProfile  	name:masters.k8s.infradev.io id:masters.k8s.infradev.io
+  	RootVolumeSize      	20
+  	RootVolumeType      	gp2
+  	SpotPrice
 
-<span class="go">  LaunchConfiguration/nodes.k8s.infradev.io</span>
-<span class="go">  	ImageID             	kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09</span>
-<span class="go">  	InstanceType        	t2.medium</span>
-<span class="go">  	SSHKey              	name:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11 id:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11</span>
-<span class="go">  	SecurityGroups      	[name:nodes.k8s.infradev.io]</span>
-<span class="go">  	AssociatePublicIP   	true</span>
-<span class="go">  	IAMInstanceProfile  	name:nodes.k8s.infradev.io id:nodes.k8s.infradev.io</span>
-<span class="go">  	RootVolumeSize      	20</span>
-<span class="go">  	RootVolumeType      	gp2</span>
-<span class="go">  	SpotPrice</span>
+  LaunchConfiguration/nodes.k8s.infradev.io
+  	ImageID             	kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09
+  	InstanceType        	t2.medium
+  	SSHKey              	name:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11 id:kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11
+  	SecurityGroups      	[name:nodes.k8s.infradev.io]
+  	AssociatePublicIP   	true
+  	IAMInstanceProfile  	name:nodes.k8s.infradev.io id:nodes.k8s.infradev.io
+  	RootVolumeSize      	20
+  	RootVolumeType      	gp2
+  	SpotPrice
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-bootstrap</span>
-<span class="go">  	Location            	addons/bootstrap-channel.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-bootstrap
+  	Location            	addons/bootstrap-channel.yaml
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-core.addons.k8s.io</span>
-<span class="go">  	Location            	addons/core.addons.k8s.io/v1.4.0.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-core.addons.k8s.io
+  	Location            	addons/core.addons.k8s.io/v1.4.0.yaml
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-dns-controller.addons.k8s.io</span>
-<span class="go">  	Location            	addons/dns-controller.addons.k8s.io/v1.5.1.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-dns-controller.addons.k8s.io
+  	Location            	addons/dns-controller.addons.k8s.io/v1.5.1.yaml
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-kube-dns.addons.k8s.io</span>
-<span class="go">  	Location            	addons/kube-dns.addons.k8s.io/v1.5.1.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-kube-dns.addons.k8s.io
+  	Location            	addons/kube-dns.addons.k8s.io/v1.5.1.yaml
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-limit-range.addons.k8s.io</span>
-<span class="go">  	Location            	addons/limit-range.addons.k8s.io/v1.5.0.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-limit-range.addons.k8s.io
+  	Location            	addons/limit-range.addons.k8s.io/v1.5.0.yaml
 
-<span class="go">  ManagedFile/k8s.infradev.io-addons-storage-aws.addons.k8s.io</span>
-<span class="go">  	Location            	addons/storage-aws.addons.k8s.io/v1.5.0.yaml</span>
+  ManagedFile/k8s.infradev.io-addons-storage-aws.addons.k8s.io
+  	Location            	addons/storage-aws.addons.k8s.io/v1.5.0.yaml
 
-<span class="go">  Route/0.0.0.0/0</span>
-<span class="go">  	RouteTable          	name:k8s.infradev.io</span>
-<span class="go">  	CIDR                	0.0.0.0/0</span>
-<span class="go">  	InternetGateway     	name:k8s.infradev.io</span>
+  Route/0.0.0.0/0
+  	RouteTable          	name:k8s.infradev.io
+  	CIDR                	0.0.0.0/0
+  	InternetGateway     	name:k8s.infradev.io
 
-<span class="go">  RouteTable/k8s.infradev.io</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
+  RouteTable/k8s.infradev.io
+  	VPC                 	name:k8s.infradev.io
 
-<span class="go">  RouteTableAssociation/eu-west-1a.k8s.infradev.io</span>
-<span class="go">  	RouteTable          	name:k8s.infradev.io</span>
-<span class="go">  	Subnet              	name:eu-west-1a.k8s.infradev.io</span>
+  RouteTableAssociation/eu-west-1a.k8s.infradev.io
+  	RouteTable          	name:k8s.infradev.io
+  	Subnet              	name:eu-west-1a.k8s.infradev.io
 
-<span class="go">  SSHKey/kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11</span>
-<span class="go">  	KeyFingerprint      	b9:09:b6:4c:49:ac:ce:cb:5a:f2:a5:79:b6:2e:e7:65</span>
+  SSHKey/kubernetes.k8s.infradev.io-e3:6b:c5:df:a1:e3:ad:fe:16:6e:4d:10:35:dd:67:11
+  	KeyFingerprint      	b9:09:b6:4c:49:ac:ce:cb:5a:f2:a5:79:b6:2e:e7:65
 
-<span class="go">  Secret/admin</span>
+  Secret/admin
 
-<span class="go">  Secret/kube</span>
+  Secret/kube
 
-<span class="go">  Secret/kube-proxy</span>
+  Secret/kube-proxy
 
-<span class="go">  Secret/kubelet</span>
+  Secret/kubelet
 
-<span class="go">  Secret/system-controller_manager</span>
+  Secret/system-controller_manager
 
-<span class="go">  Secret/system-dns</span>
+  Secret/system-dns
 
-<span class="go">  Secret/system-logging</span>
+  Secret/system-logging
 
-<span class="go">  Secret/system-monitoring</span>
+  Secret/system-monitoring
 
-<span class="go">  Secret/system-scheduler</span>
+  Secret/system-scheduler
 
-<span class="go">  SecurityGroup/masters.k8s.infradev.io</span>
-<span class="go">  	Description         	Security group for masters</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
-<span class="go">  	RemoveExtraRules    	[port=22, port=443, port=4001, port=4789, port=179]</span>
+  SecurityGroup/masters.k8s.infradev.io
+  	Description         	Security group for masters
+  	VPC                 	name:k8s.infradev.io
+  	RemoveExtraRules    	[port=22, port=443, port=4001, port=4789, port=179]
 
-<span class="go">  SecurityGroup/nodes.k8s.infradev.io</span>
-<span class="go">  	Description         	Security group for nodes</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
-<span class="go">  	RemoveExtraRules    	[port=22]</span>
+  SecurityGroup/nodes.k8s.infradev.io
+  	Description         	Security group for nodes
+  	VPC                 	name:k8s.infradev.io
+  	RemoveExtraRules    	[port=22]
 
-<span class="go">  SecurityGroupRule/all-master-to-master</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	SourceGroup         	name:masters.k8s.infradev.io</span>
+  SecurityGroupRule/all-master-to-master
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	SourceGroup         	name:masters.k8s.infradev.io
 
-<span class="go">  SecurityGroupRule/all-master-to-node</span>
-<span class="go">  	SecurityGroup       	name:nodes.k8s.infradev.io</span>
-<span class="go">  	SourceGroup         	name:masters.k8s.infradev.io</span>
+  SecurityGroupRule/all-master-to-node
+  	SecurityGroup       	name:nodes.k8s.infradev.io
+  	SourceGroup         	name:masters.k8s.infradev.io
 
-<span class="go">  SecurityGroupRule/all-node-to-node</span>
-<span class="go">  	SecurityGroup       	name:nodes.k8s.infradev.io</span>
-<span class="go">  	SourceGroup         	name:nodes.k8s.infradev.io</span>
+  SecurityGroupRule/all-node-to-node
+  	SecurityGroup       	name:nodes.k8s.infradev.io
+  	SourceGroup         	name:nodes.k8s.infradev.io
 
-<span class="go">  SecurityGroupRule/https-external-to-master-x.x.x.x/32</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	CIDR                	x.x.x.x/32</span>
-<span class="go">  	Protocol            	tcp</span>
-<span class="go">  	FromPort            	443</span>
-<span class="go">  	ToPort              	443</span>
+  SecurityGroupRule/https-external-to-master-x.x.x.x/32
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	CIDR                	x.x.x.x/32
+  	Protocol            	tcp
+  	FromPort            	443
+  	ToPort              	443
 
-<span class="go">  SecurityGroupRule/master-egress</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	CIDR                	0.0.0.0/0</span>
-<span class="go">  	Egress              	true</span>
+  SecurityGroupRule/master-egress
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	CIDR                	0.0.0.0/0
+  	Egress              	true
 
-<span class="go">  SecurityGroupRule/node-egress</span>
-<span class="go">  	SecurityGroup       	name:nodes.k8s.infradev.io</span>
-<span class="go">  	CIDR                	0.0.0.0/0</span>
-<span class="go">  	Egress              	true</span>
+  SecurityGroupRule/node-egress
+  	SecurityGroup       	name:nodes.k8s.infradev.io
+  	CIDR                	0.0.0.0/0
+  	Egress              	true
 
-<span class="go">  SecurityGroupRule/node-to-master-tcp-4194</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	Protocol            	tcp</span>
-<span class="go">  	FromPort            	4194</span>
-<span class="go">  	ToPort              	4194</span>
-<span class="go">  	SourceGroup         	name:nodes.k8s.infradev.io</span>
+  SecurityGroupRule/node-to-master-tcp-4194
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	Protocol            	tcp
+  	FromPort            	4194
+  	ToPort              	4194
+  	SourceGroup         	name:nodes.k8s.infradev.io
 
-<span class="go">  SecurityGroupRule/node-to-master-tcp-443</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	Protocol            	tcp</span>
-<span class="go">  	FromPort            	443</span>
-<span class="go">  	ToPort              	443</span>
-<span class="go">  	SourceGroup         	name:nodes.k8s.infradev.io</span>
+  SecurityGroupRule/node-to-master-tcp-443
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	Protocol            	tcp
+  	FromPort            	443
+  	ToPort              	443
+  	SourceGroup         	name:nodes.k8s.infradev.io
 
-<span class="go">  SecurityGroupRule/ssh-external-to-master-x.x.x.x/32</span>
-<span class="go">  	SecurityGroup       	name:masters.k8s.infradev.io</span>
-<span class="go">  	CIDR                	x.x.x.x/32</span>
-<span class="go">  	Protocol            	tcp</span>
-<span class="go">  	FromPort            	22</span>
-<span class="go">  	ToPort              	22</span>
+  SecurityGroupRule/ssh-external-to-master-x.x.x.x/32
+  	SecurityGroup       	name:masters.k8s.infradev.io
+  	CIDR                	x.x.x.x/32
+  	Protocol            	tcp
+  	FromPort            	22
+  	ToPort              	22
 
-<span class="go">  SecurityGroupRule/ssh-external-to-node-x.x.x.x/32</span>
-<span class="go">  	SecurityGroup       	name:nodes.k8s.infradev.io</span>
-<span class="go">  	CIDR                	x.x.x.x/32</span>
-<span class="go">  	Protocol            	tcp</span>
-<span class="go">  	FromPort            	22</span>
-<span class="go">  	ToPort              	22</span>
+  SecurityGroupRule/ssh-external-to-node-x.x.x.x/32
+  	SecurityGroup       	name:nodes.k8s.infradev.io
+  	CIDR                	x.x.x.x/32
+  	Protocol            	tcp
+  	FromPort            	22
+  	ToPort              	22
 
-<span class="go">  Subnet/eu-west-1a.k8s.infradev.io</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
-<span class="go">  	AvailabilityZone    	eu-west-1a</span>
-<span class="go">  	CIDR                	172.20.32.0/19</span>
-<span class="go">  	Shared              	false</span>
+  Subnet/eu-west-1a.k8s.infradev.io
+  	VPC                 	name:k8s.infradev.io
+  	AvailabilityZone    	eu-west-1a
+  	CIDR                	172.20.32.0/19
+  	Shared              	false
 
-<span class="go">  VPC/k8s.infradev.io</span>
-<span class="go">  	CIDR                	172.20.0.0/16</span>
-<span class="go">  	EnableDNSHostnames  	true</span>
-<span class="go">  	EnableDNSSupport    	true</span>
-<span class="go">  	Shared              	false</span>
+  VPC/k8s.infradev.io
+  	CIDR                	172.20.0.0/16
+  	EnableDNSHostnames  	true
+  	EnableDNSSupport    	true
+  	Shared              	false
 
-<span class="go">  VPCDHCPOptionsAssociation/k8s.infradev.io</span>
-<span class="go">  	VPC                 	name:k8s.infradev.io</span>
-<span class="go">  	DHCPOptions         	name:k8s.infradev.io</span>
+  VPCDHCPOptionsAssociation/k8s.infradev.io
+  	VPC                 	name:k8s.infradev.io
+  	DHCPOptions         	name:k8s.infradev.io
 
-<span class="go">Must specify --yes to apply changes</span>
+Must specify --yes to apply changes
 
-<span class="go">Cluster configuration has been created.</span>
+Cluster configuration has been created.
 
-<span class="go">Suggestions:</span>
-<span class="go"> * list clusters with: kops get cluster</span>
-<span class="go"> * edit this cluster with: kops edit cluster k8s.infradev.io</span>
-<span class="go"> * edit your node instance group: kops edit ig --name=k8s.infradev.io nodes</span>
-<span class="go"> * edit your master instance group: kops edit ig --name=k8s.infradev.io master-eu-west-1a</span>
+Suggestions:
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster k8s.infradev.io
+ * edit your node instance group: kops edit ig --name=k8s.infradev.io nodes
+ * edit your master instance group: kops edit ig --name=k8s.infradev.io master-eu-west-1a
 
-<span class="go">Finally configure your cluster with: kops update cluster k8s.infradev.io --yes</span>
-</code></pre></div>
-
-<p>As you can see from the output above, kops will create and manage the following AWS resources for your new Kubernetes cluster:</p>
-
+Finally configure your cluster with: kops update cluster k8s.infradev.io --yes
+</code></pre><p>As you can see from the output above, kops will create and manage the following AWS resources for your new Kubernetes cluster:</p>
 <ol>
-<li><p>AWS</p>
-
+<li>AWS</li>
+</ol>
 <ul>
 <li>AutoscalingGroups</li>
 <li>DHCPOptions</li>
@@ -556,537 +538,462 @@ Notice the <strong>&ndash;admin-access &ldquo;$(curl -s icanhazip.com)/32&rdquo;
 <li>Subnet</li>
 <li>VPC</li>
 <li>VPCDHCPOptionsAssociation</li>
-</ul></li>
-
-<li><p>Kubernetes</p>
-
+</ul>
+<ol start="2">
+<li>Kubernetes</li>
+</ol>
 <ul>
 <li>Keypairs</li>
 <li>ManagedFiles</li>
 <li>SSHKey</li>
 <li>Secrets</li>
-</ul></li>
-</ol>
-
-<p><br></p>
-
-<p>Let&rsquo;s have a look at the files generated by our previous command:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>aws s3 ls crisci-kops-state/k8s.infradev.io/ --recursive
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">2017-02-27 11:02:43       4659 k8s.infradev.io/cluster.spec</span>
-<span class="go">2017-02-27 11:02:42        837 k8s.infradev.io/config</span>
-<span class="go">2017-02-27 11:02:43        288 k8s.infradev.io/instancegroup/master-eu-west-1a</span>
-<span class="go">2017-02-27 11:02:43        274 k8s.infradev.io/instancegroup/nodes</span>
-<span class="go">2017-02-27 11:02:43        416 k8s.infradev.io/pki/ssh/public/admin/e36bc5dfa1e3adfe166e4d1035dd6711</span>
-</code></pre></div>
-
-<p>One of them is the cluster.spec which contains the whole details about the cluster that will be created:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>aws s3 cp s3://crisci-kops-state/k8s.infradev.io/cluster.spec -
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">metadata:</span>
-<span class="go">  Annotations: null</span>
-<span class="go">  ClusterName: &quot;&quot;</span>
-<span class="go">  CreationTimestamp: null</span>
-<span class="go">  DeletionGracePeriodSeconds: null</span>
-<span class="go">  DeletionTimestamp: null</span>
-<span class="go">  Finalizers: null</span>
-<span class="go">  GenerateName: &quot;&quot;</span>
-<span class="go">  Generation: 0</span>
-<span class="go">  Labels: null</span>
-<span class="go">  Name: k8s.infradev.io</span>
-<span class="go">  Namespace: &quot;&quot;</span>
-<span class="go">  OwnerReferences: null</span>
-<span class="go">  ResourceVersion: &quot;&quot;</span>
-<span class="go">  SelfLink: &quot;&quot;</span>
-<span class="go">  UID: &quot;&quot;</span>
-<span class="go">spec:</span>
-<span class="go">  api:</span>
-<span class="go">    dns: {}</span>
-<span class="go">  channel: stable</span>
-<span class="go">  cloudProvider: aws</span>
-<span class="go">  clusterDNSDomain: cluster.local</span>
-<span class="go">  configBase: s3://crisci-kops-state/k8s.infradev.io</span>
-<span class="go">  configStore: s3://crisci-kops-state/k8s.infradev.io</span>
-<span class="go">  dnsZone: Z33Q1172C7EFWF</span>
-<span class="go">  docker:</span>
-<span class="go">    bridge: &quot;&quot;</span>
-<span class="go">    ipMasq: false</span>
-<span class="go">    ipTables: false</span>
-<span class="go">    logLevel: warn</span>
-<span class="go">    storage: overlay,aufs</span>
-<span class="go">    version: 1.12.3</span>
-<span class="go">  etcdClusters:</span>
-<span class="go">  - etcdMembers:</span>
-<span class="go">    - instanceGroup: master-eu-west-1a</span>
-<span class="go">      name: a</span>
-<span class="go">    name: main</span>
-<span class="go">  - etcdMembers:</span>
-<span class="go">    - instanceGroup: master-eu-west-1a</span>
-<span class="go">      name: a</span>
-<span class="go">    name: events</span>
-<span class="go">  keyStore: s3://crisci-kops-state/k8s.infradev.io/pki</span>
-<span class="go">  kubeAPIServer:</span>
-<span class="go">    address: 127.0.0.1</span>
-<span class="go">    admissionControl:</span>
-<span class="go">    - NamespaceLifecycle</span>
-<span class="go">    - LimitRanger</span>
-<span class="go">    - ServiceAccount</span>
-<span class="go">    - PersistentVolumeLabel</span>
-<span class="go">    - DefaultStorageClass</span>
-<span class="go">    - ResourceQuota</span>
-<span class="go">    allowPrivileged: true</span>
-<span class="go">    anonymousAuth: false</span>
-<span class="go">    apiServerCount: 1</span>
-<span class="go">    basicAuthFile: /srv/kubernetes/basic_auth.csv</span>
-<span class="go">    clientCAFile: /srv/kubernetes/ca.crt</span>
-<span class="go">    cloudProvider: aws</span>
-<span class="go">    etcdServers:</span>
-<span class="go">    - http://127.0.0.1:4001</span>
-<span class="go">    etcdServersOverrides:</span>
-<span class="go">    - /events#http://127.0.0.1:4002</span>
-<span class="go">    image: gcr.io/google_containers/kube-apiserver:v1.5.2</span>
-<span class="go">    kubeletPreferredAddressTypes:</span>
-<span class="go">    - InternalIP</span>
-<span class="go">    - Hostname</span>
-<span class="go">    - ExternalIP</span>
-<span class="go">    - LegacyHostIP</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    pathSrvKubernetes: /srv/kubernetes</span>
-<span class="go">    pathSrvSshproxy: /srv/sshproxy</span>
-<span class="go">    securePort: 443</span>
-<span class="go">    serviceClusterIPRange: 100.64.0.0/13</span>
-<span class="go">    storageBackend: etcd2</span>
-<span class="go">    tlsCertFile: /srv/kubernetes/server.cert</span>
-<span class="go">    tlsPrivateKeyFile: /srv/kubernetes/server.key</span>
-<span class="go">    tokenAuthFile: /srv/kubernetes/known_tokens.csv</span>
-<span class="go">  kubeControllerManager:</span>
-<span class="go">    allocateNodeCIDRs: true</span>
-<span class="go">    attachDetachReconcileSyncPeriod: 1m0s</span>
-<span class="go">    cloudProvider: aws</span>
-<span class="go">    clusterCIDR: 100.96.0.0/11</span>
-<span class="go">    clusterName: k8s.infradev.io</span>
-<span class="go">    configureCloudRoutes: true</span>
-<span class="go">    image: gcr.io/google_containers/kube-controller-manager:v1.5.2</span>
-<span class="go">    leaderElection:</span>
-<span class="go">      leaderElect: true</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    master: 127.0.0.1:8080</span>
-<span class="go">    pathSrvKubernetes: /srv/kubernetes</span>
-<span class="go">    rootCAFile: /srv/kubernetes/ca.crt</span>
-<span class="go">    serviceAccountPrivateKeyFile: /srv/kubernetes/server.key</span>
-<span class="go">  kubeDNS:</span>
-<span class="go">    domain: cluster.local</span>
-<span class="go">    image: gcr.io/google_containers/kubedns-amd64:1.3</span>
-<span class="go">    replicas: 2</span>
-<span class="go">    serverIP: 100.64.0.10</span>
-<span class="go">  kubeProxy:</span>
-<span class="go">    cpuRequest: 100m</span>
-<span class="go">    image: gcr.io/google_containers/kube-proxy:v1.5.2</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    master: https://api.internal.k8s.infradev.io</span>
-<span class="go">  kubeScheduler:</span>
-<span class="go">    image: gcr.io/google_containers/kube-scheduler:v1.5.2</span>
-<span class="go">    leaderElection:</span>
-<span class="go">      leaderElect: true</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    master: 127.0.0.1:8080</span>
-<span class="go">  kubelet:</span>
-<span class="go">    allowPrivileged: true</span>
-<span class="go">    apiServers: https://api.internal.k8s.infradev.io</span>
-<span class="go">    babysitDaemons: true</span>
-<span class="go">    cgroupRoot: docker</span>
-<span class="go">    cloudProvider: aws</span>
-<span class="go">    clusterDNS: 100.64.0.10</span>
-<span class="go">    clusterDomain: cluster.local</span>
-<span class="go">    enableDebuggingHandlers: true</span>
-<span class="go">    evictionHard: memory.available&lt;100Mi,nodefs.available&lt;10%,nodefs.inodesFree&lt;5%,imagefs.available&lt;10%,imagefs.inodesFree&lt;5%</span>
-<span class="go">    evictionPressureTransitionPeriod: 0s</span>
-<span class="go">    hostnameOverride: &#39;@aws&#39;</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    networkPluginMTU: 9001</span>
-<span class="go">    networkPluginName: kubenet</span>
-<span class="go">    nonMasqueradeCIDR: 100.64.0.0/10</span>
-<span class="go">    podManifestPath: /etc/kubernetes/manifests</span>
-<span class="go">  kubernetesApiAccess:</span>
-<span class="go">  - x.x.x.x/32</span>
-<span class="go">  kubernetesVersion: 1.5.2</span>
-<span class="go">  masterInternalName: api.internal.k8s.infradev.io</span>
-<span class="go">  masterKubelet:</span>
-<span class="go">    allowPrivileged: true</span>
-<span class="go">    apiServers: http://127.0.0.1:8080</span>
-<span class="go">    babysitDaemons: true</span>
-<span class="go">    cgroupRoot: docker</span>
-<span class="go">    cloudProvider: aws</span>
-<span class="go">    clusterDNS: 100.64.0.10</span>
-<span class="go">    clusterDomain: cluster.local</span>
-<span class="go">    enableDebuggingHandlers: true</span>
-<span class="go">    evictionHard: memory.available&lt;100Mi,nodefs.available&lt;10%,nodefs.inodesFree&lt;5%,imagefs.available&lt;10%,imagefs.inodesFree&lt;5%</span>
-<span class="go">    evictionPressureTransitionPeriod: 0s</span>
-<span class="go">    hostnameOverride: &#39;@aws&#39;</span>
-<span class="go">    logLevel: 2</span>
-<span class="go">    networkPluginMTU: 9001</span>
-<span class="go">    networkPluginName: kubenet</span>
-<span class="go">    nonMasqueradeCIDR: 100.64.0.0/10</span>
-<span class="go">    podManifestPath: /etc/kubernetes/manifests</span>
-<span class="go">    registerSchedulable: false</span>
-<span class="go">  masterPublicName: api.k8s.infradev.io</span>
-<span class="go">  networkCIDR: 172.20.0.0/16</span>
-<span class="go">  networking:</span>
-<span class="go">    kubenet: {}</span>
-<span class="go">  nonMasqueradeCIDR: 100.64.0.0/10</span>
-<span class="go">  secretStore: s3://crisci-kops-state/k8s.infradev.io/secrets</span>
-<span class="go">  serviceClusterIPRange: 100.64.0.0/13</span>
-<span class="go">  sshAccess:</span>
-<span class="go">  - x.x.x.x/32</span>
-<span class="go">  subnets:</span>
-<span class="go">  - cidr: 172.20.32.0/19</span>
-<span class="go">    name: eu-west-1a</span>
-<span class="go">    type: Public</span>
-<span class="go">    zone: eu-west-1a</span>
-<span class="go">  topology:</span>
-<span class="go">    dns:</span>
-<span class="go">      type: Public</span>
-<span class="go">    masters: public</span>
-<span class="go">    nodes: public</span>
-</code></pre></div>
-
-<p><br></p>
-
-<h1 id="update-the-cluster">Update the cluster</h1>
-
-<p>We now need to apply all these clusters settings created earlier and stored inside our S3 bucket:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops update cluster ${NAME} --yes
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">I0227 12:52:22.377172   41877 executor.go:91] Tasks: 0 done / 55 total; 27 can run</span>
-<span class="go">I0227 12:52:23.892835   41877 vfs_castore.go:422] Issuing new certificate: &quot;kubelet&quot;</span>
-<span class="go">I0227 12:52:23.979435   41877 vfs_castore.go:422] Issuing new certificate: &quot;kubecfg&quot;</span>
-<span class="go">I0227 12:52:24.453922   41877 vfs_castore.go:422] Issuing new certificate: &quot;master&quot;</span>
-<span class="go">I0227 12:52:26.781553   41877 executor.go:91] Tasks: 27 done / 55 total; 12 can run</span>
-<span class="go">I0227 12:52:28.123472   41877 executor.go:91] Tasks: 39 done / 55 total; 14 can run</span>
-<span class="go">I0227 12:52:30.072841   41877 launchconfiguration.go:302] waiting for IAM instance profile &quot;nodes.k8s.infradev.io&quot; to be ready</span>
-<span class="go">I0227 12:52:30.112320   41877 launchconfiguration.go:302] waiting for IAM instance profile &quot;masters.k8s.infradev.io&quot; to be ready</span>
-<span class="go">I0227 12:52:40.911275   41877 executor.go:91] Tasks: 53 done / 55 total; 2 can run</span>
-<span class="go">I0227 12:52:41.401692   41877 executor.go:91] Tasks: 55 done / 55 total; 0 can run</span>
-<span class="go">I0227 12:52:41.401765   41877 dns.go:140] Pre-creating DNS records</span>
-<span class="go">I0227 12:52:46.657056   41877 update_cluster.go:204] Exporting kubecfg for cluster</span>
-<span class="go">Wrote config for k8s.infradev.io to &quot;/Users/lcrisci/.kube/config&quot;</span>
-<span class="go">Kops has set your kubectl context to k8s.infradev.io</span>
-
-<span class="go">Cluster is starting.  It should be ready in a few minutes.</span>
-
-<span class="go">Suggestions:</span>
-<span class="go"> * list nodes: kubectl get nodes --show-labels</span>
-<span class="go"> * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.k8s.infradev.io</span>
-<span class="go"> * read about installing addons: https://github.com/kubernetes/kops/blob/master/docs/addons.md</span>
-</code></pre></div>
-
-<p><br></p>
-
-<h1 id="validate-the-cluster">Validate the cluster</h1>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops validate cluster
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Using cluster from kubectl context: k8s.infradev.io</span>
-
-<span class="go">Validating cluster k8s.infradev.io</span>
-
-
-<span class="go">cannot get nodes for &quot;k8s.infradev.io&quot;: Get https://api.k8s.infradev.io/api/v1/nodes: dial tcp 203.0.113.123:443: i/o timeout</span>
-</code></pre></div>
-
-<p>Our cluster is not yet ready and is still being created ( the api server is not responding yet ).<br>
-<strong>203.0.113.123</strong> is a placeholder ip part of the TEST-NET which kops is using as a dummy ip until the master(s) and it&rsquo;s node(s) bootstrap properly and update their own ips</p>
-
-<p><br></p>
-
-<p>This is the output that we get after rerunning our validate command 5 minutes later:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Using cluster from kubectl context: k8s.infradev.io</span>
-
-<span class="go">Validating cluster k8s.infradev.io</span>
-
-<span class="go">INSTANCE GROUPS</span>
-<span class="go">NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS</span>
-<span class="go">master-eu-west-1a	Master	m3.medium	1	1	eu-west-1a</span>
-<span class="go">nodes			Node	t2.medium	1	1	eu-west-1a</span>
-
-<span class="go">NODE STATUS</span>
-<span class="go">NAME						ROLE	READY</span>
-<span class="go">ip-172-20-37-30.eu-west-1.compute.internal	node	True</span>
-<span class="go">ip-172-20-63-122.eu-west-1.compute.internal	master	True</span>
-
-<span class="go">Your cluster k8s.infradev.io is ready</span>
-</code></pre></div>
-
-<p><br></p>
-
-<p>Let&rsquo;s have a look at the state of our s3 bucket</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>aws s3 ls crisci-kops-state/k8s.infradev.io/ --recursive
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">2017-02-27 12:52:24        882 k8s.infradev.io/addons/bootstrap-channel.yaml</span>
-<span class="go">2017-02-27 12:52:24         61 k8s.infradev.io/addons/core.addons.k8s.io/v1.4.0.yaml</span>
-<span class="go">2017-02-27 12:52:24       1152 k8s.infradev.io/addons/dns-controller.addons.k8s.io/v1.5.1.yaml</span>
-<span class="go">2017-02-27 12:52:25       6977 k8s.infradev.io/addons/kube-dns.addons.k8s.io/v1.5.1.yaml</span>
-<span class="go">2017-02-27 12:52:24        166 k8s.infradev.io/addons/limit-range.addons.k8s.io/v1.5.0.yaml</span>
-<span class="go">2017-02-27 12:52:24        309 k8s.infradev.io/addons/storage-aws.addons.k8s.io/v1.5.0.yaml</span>
-<span class="go">2017-02-27 12:52:23       4677 k8s.infradev.io/cluster.spec</span>
-<span class="go">2017-02-27 11:02:42        837 k8s.infradev.io/config</span>
-<span class="go">2017-02-27 12:52:23        339 k8s.infradev.io/instancegroup/master-eu-west-1a</span>
-<span class="go">2017-02-27 12:52:23        325 k8s.infradev.io/instancegroup/nodes</span>
-<span class="go">2017-02-27 12:52:26       1046 k8s.infradev.io/pki/issued/ca/6391754630877149692432351200.crt</span>
-<span class="go">2017-02-27 12:52:27       1062 k8s.infradev.io/pki/issued/kubecfg/6391754626389335158749102511.crt</span>
-<span class="go">2017-02-27 12:52:27       1062 k8s.infradev.io/pki/issued/kubelet/6391754626058396578042878673.crt</span>
-<span class="go">2017-02-27 12:52:27       1302 k8s.infradev.io/pki/issued/master/6391754626239010186701887277.crt</span>
-<span class="go">2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/ca/6391754630877149692432351200.key</span>
-<span class="go">2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/kubecfg/6391754626389335158749102511.key</span>
-<span class="go">2017-02-27 12:52:26       1679 k8s.infradev.io/pki/private/kubelet/6391754626058396578042878673.key</span>
-<span class="go">2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/master/6391754626239010186701887277.key</span>
-<span class="go">2017-02-27 11:02:43        416 k8s.infradev.io/pki/ssh/public/admin/e36bc5dfa1e3adfe166e4d1035dd6711</span>
-<span class="go">2017-02-27 12:52:27         55 k8s.infradev.io/secrets/admin</span>
-<span class="go">2017-02-27 12:52:26         55 k8s.infradev.io/secrets/kube</span>
-<span class="go">2017-02-27 12:52:25         55 k8s.infradev.io/secrets/kube-proxy</span>
-<span class="go">2017-02-27 12:52:27         55 k8s.infradev.io/secrets/kubelet</span>
-<span class="go">2017-02-27 12:52:27         55 k8s.infradev.io/secrets/system:controller_manager</span>
-<span class="go">2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:dns</span>
-<span class="go">2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:logging</span>
-<span class="go">2017-02-27 12:52:27         55 k8s.infradev.io/secrets/system:monitoring</span>
-<span class="go">2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:scheduler</span>
-</code></pre></div>
-
-<p>You will notice that new directories and their files were created by the update step:</p>
-
-<ul>
-<li><p><strong>k8s.infradev.io/secrets/</strong> contains a list of tokens generated per user/service</p></li>
-
-<li><p><strong>k8s.infradev.io/pki/</strong> contains issued client certificates and private keys</p></li>
-
-<li><p><strong>k8s.infradev.io/addons/</strong> contains addons installed by kops</p></li>
 </ul>
+<!-- raw HTML omitted -->
+<p>Let&rsquo;s have a look at the files generated by our previous command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">aws s3 ls crisci-kops-state/k8s.infradev.io/ --recursive
+</code></pre></div><pre><code class="language-console" data-lang="console">
+2017-02-27 11:02:43       4659 k8s.infradev.io/cluster.spec
+2017-02-27 11:02:42        837 k8s.infradev.io/config
+2017-02-27 11:02:43        288 k8s.infradev.io/instancegroup/master-eu-west-1a
+2017-02-27 11:02:43        274 k8s.infradev.io/instancegroup/nodes
+2017-02-27 11:02:43        416 k8s.infradev.io/pki/ssh/public/admin/e36bc5dfa1e3adfe166e4d1035dd6711
+</code></pre><p>One of them is the cluster.spec which contains the whole details about the cluster that will be created:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">aws s3 cp s3://crisci-kops-state/k8s.infradev.io/cluster.spec -
+</code></pre></div><pre><code class="language-console" data-lang="console">metadata:
+  Annotations: null
+  ClusterName: &quot;&quot;
+  CreationTimestamp: null
+  DeletionGracePeriodSeconds: null
+  DeletionTimestamp: null
+  Finalizers: null
+  GenerateName: &quot;&quot;
+  Generation: 0
+  Labels: null
+  Name: k8s.infradev.io
+  Namespace: &quot;&quot;
+  OwnerReferences: null
+  ResourceVersion: &quot;&quot;
+  SelfLink: &quot;&quot;
+  UID: &quot;&quot;
+spec:
+  api:
+    dns: {}
+  channel: stable
+  cloudProvider: aws
+  clusterDNSDomain: cluster.local
+  configBase: s3://crisci-kops-state/k8s.infradev.io
+  configStore: s3://crisci-kops-state/k8s.infradev.io
+  dnsZone: Z33Q1172C7EFWF
+  docker:
+    bridge: &quot;&quot;
+    ipMasq: false
+    ipTables: false
+    logLevel: warn
+    storage: overlay,aufs
+    version: 1.12.3
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master-eu-west-1a
+      name: a
+    name: main
+  - etcdMembers:
+    - instanceGroup: master-eu-west-1a
+      name: a
+    name: events
+  keyStore: s3://crisci-kops-state/k8s.infradev.io/pki
+  kubeAPIServer:
+    address: 127.0.0.1
+    admissionControl:
+    - NamespaceLifecycle
+    - LimitRanger
+    - ServiceAccount
+    - PersistentVolumeLabel
+    - DefaultStorageClass
+    - ResourceQuota
+    allowPrivileged: true
+    anonymousAuth: false
+    apiServerCount: 1
+    basicAuthFile: /srv/kubernetes/basic_auth.csv
+    clientCAFile: /srv/kubernetes/ca.crt
+    cloudProvider: aws
+    etcdServers:
+    - http://127.0.0.1:4001
+    etcdServersOverrides:
+    - /events#http://127.0.0.1:4002
+    image: gcr.io/google_containers/kube-apiserver:v1.5.2
+    kubeletPreferredAddressTypes:
+    - InternalIP
+    - Hostname
+    - ExternalIP
+    - LegacyHostIP
+    logLevel: 2
+    pathSrvKubernetes: /srv/kubernetes
+    pathSrvSshproxy: /srv/sshproxy
+    securePort: 443
+    serviceClusterIPRange: 100.64.0.0/13
+    storageBackend: etcd2
+    tlsCertFile: /srv/kubernetes/server.cert
+    tlsPrivateKeyFile: /srv/kubernetes/server.key
+    tokenAuthFile: /srv/kubernetes/known_tokens.csv
+  kubeControllerManager:
+    allocateNodeCIDRs: true
+    attachDetachReconcileSyncPeriod: 1m0s
+    cloudProvider: aws
+    clusterCIDR: 100.96.0.0/11
+    clusterName: k8s.infradev.io
+    configureCloudRoutes: true
+    image: gcr.io/google_containers/kube-controller-manager:v1.5.2
+    leaderElection:
+      leaderElect: true
+    logLevel: 2
+    master: 127.0.0.1:8080
+    pathSrvKubernetes: /srv/kubernetes
+    rootCAFile: /srv/kubernetes/ca.crt
+    serviceAccountPrivateKeyFile: /srv/kubernetes/server.key
+  kubeDNS:
+    domain: cluster.local
+    image: gcr.io/google_containers/kubedns-amd64:1.3
+    replicas: 2
+    serverIP: 100.64.0.10
+  kubeProxy:
+    cpuRequest: 100m
+    image: gcr.io/google_containers/kube-proxy:v1.5.2
+    logLevel: 2
+    master: https://api.internal.k8s.infradev.io
+  kubeScheduler:
+    image: gcr.io/google_containers/kube-scheduler:v1.5.2
+    leaderElection:
+      leaderElect: true
+    logLevel: 2
+    master: 127.0.0.1:8080
+  kubelet:
+    allowPrivileged: true
+    apiServers: https://api.internal.k8s.infradev.io
+    babysitDaemons: true
+    cgroupRoot: docker
+    cloudProvider: aws
+    clusterDNS: 100.64.0.10
+    clusterDomain: cluster.local
+    enableDebuggingHandlers: true
+    evictionHard: memory.available&lt;100Mi,nodefs.available&lt;10%,nodefs.inodesFree&lt;5%,imagefs.available&lt;10%,imagefs.inodesFree&lt;5%
+    evictionPressureTransitionPeriod: 0s
+    hostnameOverride: '@aws'
+    logLevel: 2
+    networkPluginMTU: 9001
+    networkPluginName: kubenet
+    nonMasqueradeCIDR: 100.64.0.0/10
+    podManifestPath: /etc/kubernetes/manifests
+  kubernetesApiAccess:
+  - x.x.x.x/32
+  kubernetesVersion: 1.5.2
+  masterInternalName: api.internal.k8s.infradev.io
+  masterKubelet:
+    allowPrivileged: true
+    apiServers: http://127.0.0.1:8080
+    babysitDaemons: true
+    cgroupRoot: docker
+    cloudProvider: aws
+    clusterDNS: 100.64.0.10
+    clusterDomain: cluster.local
+    enableDebuggingHandlers: true
+    evictionHard: memory.available&lt;100Mi,nodefs.available&lt;10%,nodefs.inodesFree&lt;5%,imagefs.available&lt;10%,imagefs.inodesFree&lt;5%
+    evictionPressureTransitionPeriod: 0s
+    hostnameOverride: '@aws'
+    logLevel: 2
+    networkPluginMTU: 9001
+    networkPluginName: kubenet
+    nonMasqueradeCIDR: 100.64.0.0/10
+    podManifestPath: /etc/kubernetes/manifests
+    registerSchedulable: false
+  masterPublicName: api.k8s.infradev.io
+  networkCIDR: 172.20.0.0/16
+  networking:
+    kubenet: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  secretStore: s3://crisci-kops-state/k8s.infradev.io/secrets
+  serviceClusterIPRange: 100.64.0.0/13
+  sshAccess:
+  - x.x.x.x/32
+  subnets:
+  - cidr: 172.20.32.0/19
+    name: eu-west-1a
+    type: Public
+    zone: eu-west-1a
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public
+</code></pre><!-- raw HTML omitted -->
+<h1 id="update-the-cluster">Update the cluster</h1>
+<p>We now need to apply all these clusters settings created earlier and stored inside our S3 bucket:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops update cluster ${NAME} --yes
+</code></pre></div><pre><code class="language-console" data-lang="console">I0227 12:52:22.377172   41877 executor.go:91] Tasks: 0 done / 55 total; 27 can run
+I0227 12:52:23.892835   41877 vfs_castore.go:422] Issuing new certificate: &quot;kubelet&quot;
+I0227 12:52:23.979435   41877 vfs_castore.go:422] Issuing new certificate: &quot;kubecfg&quot;
+I0227 12:52:24.453922   41877 vfs_castore.go:422] Issuing new certificate: &quot;master&quot;
+I0227 12:52:26.781553   41877 executor.go:91] Tasks: 27 done / 55 total; 12 can run
+I0227 12:52:28.123472   41877 executor.go:91] Tasks: 39 done / 55 total; 14 can run
+I0227 12:52:30.072841   41877 launchconfiguration.go:302] waiting for IAM instance profile &quot;nodes.k8s.infradev.io&quot; to be ready
+I0227 12:52:30.112320   41877 launchconfiguration.go:302] waiting for IAM instance profile &quot;masters.k8s.infradev.io&quot; to be ready
+I0227 12:52:40.911275   41877 executor.go:91] Tasks: 53 done / 55 total; 2 can run
+I0227 12:52:41.401692   41877 executor.go:91] Tasks: 55 done / 55 total; 0 can run
+I0227 12:52:41.401765   41877 dns.go:140] Pre-creating DNS records
+I0227 12:52:46.657056   41877 update_cluster.go:204] Exporting kubecfg for cluster
+Wrote config for k8s.infradev.io to &quot;/Users/lcrisci/.kube/config&quot;
+Kops has set your kubectl context to k8s.infradev.io
 
-<p><br></p>
+Cluster is starting.  It should be ready in a few minutes.
 
+Suggestions:
+ * list nodes: kubectl get nodes --show-labels
+ * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.k8s.infradev.io
+ * read about installing addons: https://github.com/kubernetes/kops/blob/master/docs/addons.md
+
+</code></pre><!-- raw HTML omitted -->
+<h1 id="validate-the-cluster">Validate the cluster</h1>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops validate cluster
+</code></pre></div><pre><code class="language-console" data-lang="console">Using cluster from kubectl context: k8s.infradev.io
+
+Validating cluster k8s.infradev.io
+
+
+cannot get nodes for &quot;k8s.infradev.io&quot;: Get https://api.k8s.infradev.io/api/v1/nodes: dial tcp 203.0.113.123:443: i/o timeout
+</code></pre><p>Our cluster is not yet ready and is still being created ( the api server is not responding yet ).<!-- raw HTML omitted -->
+<strong>203.0.113.123</strong> is a placeholder ip part of the TEST-NET which kops is using as a dummy ip until the master(s) and it&rsquo;s node(s) bootstrap properly and update their own ips</p>
+<!-- raw HTML omitted -->
+<p>This is the output that we get after rerunning our validate command 5 minutes later:</p>
+<pre><code class="language-console" data-lang="console">Using cluster from kubectl context: k8s.infradev.io
+
+Validating cluster k8s.infradev.io
+
+INSTANCE GROUPS
+NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
+master-eu-west-1a	Master	m3.medium	1	1	eu-west-1a
+nodes			Node	t2.medium	1	1	eu-west-1a
+
+NODE STATUS
+NAME						ROLE	READY
+ip-172-20-37-30.eu-west-1.compute.internal	node	True
+ip-172-20-63-122.eu-west-1.compute.internal	master	True
+
+Your cluster k8s.infradev.io is ready
+</code></pre><!-- raw HTML omitted -->
+<p>Let&rsquo;s have a look at the state of our s3 bucket</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">aws s3 ls crisci-kops-state/k8s.infradev.io/ --recursive
+</code></pre></div><pre><code class="language-console" data-lang="console">2017-02-27 12:52:24        882 k8s.infradev.io/addons/bootstrap-channel.yaml
+2017-02-27 12:52:24         61 k8s.infradev.io/addons/core.addons.k8s.io/v1.4.0.yaml
+2017-02-27 12:52:24       1152 k8s.infradev.io/addons/dns-controller.addons.k8s.io/v1.5.1.yaml
+2017-02-27 12:52:25       6977 k8s.infradev.io/addons/kube-dns.addons.k8s.io/v1.5.1.yaml
+2017-02-27 12:52:24        166 k8s.infradev.io/addons/limit-range.addons.k8s.io/v1.5.0.yaml
+2017-02-27 12:52:24        309 k8s.infradev.io/addons/storage-aws.addons.k8s.io/v1.5.0.yaml
+2017-02-27 12:52:23       4677 k8s.infradev.io/cluster.spec
+2017-02-27 11:02:42        837 k8s.infradev.io/config
+2017-02-27 12:52:23        339 k8s.infradev.io/instancegroup/master-eu-west-1a
+2017-02-27 12:52:23        325 k8s.infradev.io/instancegroup/nodes
+2017-02-27 12:52:26       1046 k8s.infradev.io/pki/issued/ca/6391754630877149692432351200.crt
+2017-02-27 12:52:27       1062 k8s.infradev.io/pki/issued/kubecfg/6391754626389335158749102511.crt
+2017-02-27 12:52:27       1062 k8s.infradev.io/pki/issued/kubelet/6391754626058396578042878673.crt
+2017-02-27 12:52:27       1302 k8s.infradev.io/pki/issued/master/6391754626239010186701887277.crt
+2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/ca/6391754630877149692432351200.key
+2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/kubecfg/6391754626389335158749102511.key
+2017-02-27 12:52:26       1679 k8s.infradev.io/pki/private/kubelet/6391754626058396578042878673.key
+2017-02-27 12:52:26       1675 k8s.infradev.io/pki/private/master/6391754626239010186701887277.key
+2017-02-27 11:02:43        416 k8s.infradev.io/pki/ssh/public/admin/e36bc5dfa1e3adfe166e4d1035dd6711
+2017-02-27 12:52:27         55 k8s.infradev.io/secrets/admin
+2017-02-27 12:52:26         55 k8s.infradev.io/secrets/kube
+2017-02-27 12:52:25         55 k8s.infradev.io/secrets/kube-proxy
+2017-02-27 12:52:27         55 k8s.infradev.io/secrets/kubelet
+2017-02-27 12:52:27         55 k8s.infradev.io/secrets/system:controller_manager
+2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:dns
+2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:logging
+2017-02-27 12:52:27         55 k8s.infradev.io/secrets/system:monitoring
+2017-02-27 12:52:26         55 k8s.infradev.io/secrets/system:scheduler
+</code></pre><p>You will notice that new directories and their files were created by the update step:</p>
+<ul>
+<li>
+<p><strong>k8s.infradev.io/secrets/</strong> contains a list of tokens generated per user/service</p>
+</li>
+<li>
+<p><strong>k8s.infradev.io/pki/</strong> contains issued client certificates and private keys</p>
+</li>
+<li>
+<p><strong>k8s.infradev.io/addons/</strong> contains addons installed by kops</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
 <h1 id="kubectl-on-the-mic">kubectl on the mic</h1>
+<p>We should be pointing to our new cluster:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl config get-contexts
+</code></pre></div><pre><code class="language-console" data-lang="console">CURRENT   NAME              CLUSTER           AUTHINFO          NAMESPACE
+*         k8s.infradev.io   k8s.infradev.io   k8s.infradev.io
+          minikube          minikube          minikube
+</code></pre><!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl cluster-info
+</code></pre></div><pre><code class="language-console" data-lang="console">Kubernetes master is running at https://api.k8s.infradev.io
+KubeDNS is running at https://api.k8s.infradev.io/api/v1/proxy/namespaces/kube-system/services/kube-dns
 
-<p>We should be pointing to our new cluster:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl config get-contexts
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">CURRENT   NAME              CLUSTER           AUTHINFO          NAMESPACE</span>
-<span class="go">*         k8s.infradev.io   k8s.infradev.io   k8s.infradev.io</span>
-<span class="go">          minikube          minikube          minikube</span>
-</code></pre></div>
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+</code></pre><p>A quick deployment to test our setup:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl run nginx --image=nginx --port=80
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl get all
+</code></pre></div><pre><code class="language-console" data-lang="console">NAME                        READY     STATUS    RESTARTS   AGE
+po/nginx-3449338310-bxbjb   1/1       Running   0          50s
 
-<p><br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl cluster-info
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Kubernetes master is running at https://api.k8s.infradev.io</span>
-<span class="go">KubeDNS is running at https://api.k8s.infradev.io/api/v1/proxy/namespaces/kube-system/services/kube-dns</span>
+NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+svc/kubernetes   100.64.0.1   &lt;none&gt;        443/TCP   3m
 
-<span class="go">To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.</span>
-</code></pre></div>
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/nginx   1         1         1            1           50s
 
-<p>A quick deployment to test our setup:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl run nginx --image=nginx --port=80
-</code></pre></div>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl get all
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME                        READY     STATUS    RESTARTS   AGE</span>
-<span class="go">po/nginx-3449338310-bxbjb   1/1       Running   0          50s</span>
+NAME                  DESIRED   CURRENT   READY     AGE
+rs/nginx-3449338310   1         1         1         50s
+</code></pre><p>Let&rsquo;s forward the pod container locally and test our container:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl port-forward nginx-3449338310-bxbjb 8081:80
+</code></pre></div><p>In another terminal, type the following:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">curl -I localhost:8081
+</code></pre></div><p>You should get the following output ( a 200 OK )</p>
+<pre><code class="language-console" data-lang="console">HTTP/1.1 200 OK
+Server: nginx/1.11.10
+Date: Tue, 28 Feb 2017 09:35:01 GMT
+Content-Type: text/html
+Content-Length: 612
+Last-Modified: Tue, 14 Feb 2017 15:36:04 GMT
+Connection: keep-alive
+ETag: &quot;58a323e4-264&quot;
+Accept-Ranges: bytes
 
-<span class="go">NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE</span>
-<span class="go">svc/kubernetes   100.64.0.1   &lt;none&gt;        443/TCP   3m</span>
+</code></pre><!-- raw HTML omitted -->
+<h1 id="its-your-turn-kops">It&rsquo;s your turn kops</h1>
+<p>Let&rsquo;s have a look at our current instancegroups:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops get ig
+</code></pre></div><pre><code class="language-console" data-lang="console">Using cluster from kubectl context: k8s.infradev.io
 
-<span class="go">NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span>
-<span class="go">deploy/nginx   1         1         1            1           50s</span>
+NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
+master-eu-west-1a	Master	m3.medium	1	1	eu-west-1a
+nodes			Node	t2.medium	1	1	eu-west-1a
+</code></pre><h1 id="adding-a-new-node-inside-our-cluster">Adding a new node inside our cluster</h1>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops edit ig nodes
+</code></pre></div><p>You should get a similar view</p>
+<pre><code class="language-console" data-lang="console">apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: &quot;2017-02-28T08:08:10Z&quot;
+  labels:
+    kops.k8s.io/cluster: k8s.infradev.io
+  name: nodes
+spec:
+  image: kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09
+  machineType: t2.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - eu-west-1a
+</code></pre><p>We will simply need to +1 the min/max Size entries before we can update our cluster with an extra node:</p>
+<pre><code class="language-console" data-lang="console">apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: &quot;2017-02-28T08:08:10Z&quot;
+  labels:
+    kops.k8s.io/cluster: k8s.infradev.io
+  name: nodes
+spec:
+  image: kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09
+  machineType: t2.medium
+  maxSize: 2
+  minSize: 2
+  role: Node
+  subnets:
+  - eu-west-1a
+</code></pre><p>Let&rsquo;s do a quick dry-run to verify that our last edit will be correctly applied:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops update cluster
+</code></pre></div><pre><code class="language-console" data-lang="console">Using cluster from kubectl context: k8s.infradev.io
 
-<span class="go">NAME                  DESIRED   CURRENT   READY     AGE</span>
-<span class="go">rs/nginx-3449338310   1         1         1         50s</span>
-</code></pre></div>
+I0228 09:26:01.246915   56008 executor.go:91] Tasks: 0 done / 55 total; 27 can run
+I0228 09:26:02.859778   56008 executor.go:91] Tasks: 27 done / 55 total; 12 can run
+I0228 09:26:03.455066   56008 executor.go:91] Tasks: 39 done / 55 total; 14 can run
+I0228 09:26:05.044053   56008 executor.go:91] Tasks: 53 done / 55 total; 2 can run
+I0228 09:26:05.160390   56008 executor.go:91] Tasks: 55 done / 55 total; 0 can run
+Will create resources:
+  IAMRolePolicy/additional.masters.k8s.infradev.io
+  	Role                	name:masters.k8s.infradev.io id:AROAJRW7FGIS3QZOECW26
 
-<p>Let&rsquo;s forward the pod container locally and test our container:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl port-forward nginx-3449338310-bxbjb 8081:80
-</code></pre></div>
+  IAMRolePolicy/additional.nodes.k8s.infradev.io
+  	Role                	name:nodes.k8s.infradev.io id:AROAJ73WUQMRUWZQ4EYU4
 
-<p>In another terminal, type the following:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>curl -I localhost:8081
-</code></pre></div>
+Will modify resources:
+  AutoscalingGroup/nodes.k8s.infradev.io
+  	MinSize             	 1 -&gt; 2
+  	MaxSize             	 1 -&gt; 2
 
-<p>You should get the following output ( a 200 OK )</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">HTTP/1.1 200 OK</span>
-<span class="go">Server: nginx/1.11.10</span>
-<span class="go">Date: Tue, 28 Feb 2017 09:35:01 GMT</span>
-<span class="go">Content-Type: text/html</span>
-<span class="go">Content-Length: 612</span>
-<span class="go">Last-Modified: Tue, 14 Feb 2017 15:36:04 GMT</span>
-<span class="go">Connection: keep-alive</span>
-<span class="go">ETag: &quot;58a323e4-264&quot;</span>
-<span class="go">Accept-Ranges: bytes</span>
-</code></pre></div>
+Must specify --yes to apply changes
+</code></pre><p>That looks good to me, let&rsquo;s update our cluster:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops update cluster --yes
+</code></pre></div><pre><code class="language-console" data-lang="console">Using cluster from kubectl context: k8s.infradev.io
 
-<p><br></p>
+I0228 09:26:37.155218   56196 executor.go:91] Tasks: 0 done / 55 total; 27 can run
+I0228 09:26:38.504246   56196 executor.go:91] Tasks: 27 done / 55 total; 12 can run
+I0228 09:26:39.285901   56196 executor.go:91] Tasks: 39 done / 55 total; 14 can run
+I0228 09:26:40.634271   56196 executor.go:91] Tasks: 53 done / 55 total; 2 can run
+I0228 09:26:40.869591   56196 executor.go:91] Tasks: 55 done / 55 total; 0 can run
+I0228 09:26:40.869646   56196 dns.go:140] Pre-creating DNS records
+I0228 09:26:41.571104   56196 update_cluster.go:204] Exporting kubecfg for cluster
+Wrote config for k8s.infradev.io to &quot;/Users/lcrisci/.kube/config&quot;
+Kops has set your kubectl context to k8s.infradev.io
 
-<h1 id="it-s-your-turn-kops">It&rsquo;s your turn kops</h1>
-
-<p>Let&rsquo;s have a look at our current instancegroups:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops get ig
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Using cluster from kubectl context: k8s.infradev.io</span>
-
-<span class="go">NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS</span>
-<span class="go">master-eu-west-1a	Master	m3.medium	1	1	eu-west-1a</span>
-<span class="go">nodes			Node	t2.medium	1	1	eu-west-1a</span>
-</code></pre></div>
-
-<h1 id="adding-a-new-node-inside-our-cluster">Adding a new node inside our cluster</h1>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops edit ig nodes
-</code></pre></div>
-
-<p>You should get a similar view</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">apiVersion: kops/v1alpha2</span>
-<span class="go">kind: InstanceGroup</span>
-<span class="go">metadata:</span>
-<span class="go">  creationTimestamp: &quot;2017-02-28T08:08:10Z&quot;</span>
-<span class="go">  labels:</span>
-<span class="go">    kops.k8s.io/cluster: k8s.infradev.io</span>
-<span class="go">  name: nodes</span>
-<span class="go">spec:</span>
-<span class="go">  image: kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09</span>
-<span class="go">  machineType: t2.medium</span>
-<span class="go">  maxSize: 1</span>
-<span class="go">  minSize: 1</span>
-<span class="go">  role: Node</span>
-<span class="go">  subnets:</span>
-<span class="go">  - eu-west-1a</span>
-</code></pre></div>
-
-<p>We will simply need to +1 the min/max Size entries before we can update our cluster with an extra node:</p>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">apiVersion: kops/v1alpha2</span>
-<span class="go">kind: InstanceGroup</span>
-<span class="go">metadata:</span>
-<span class="go">  creationTimestamp: &quot;2017-02-28T08:08:10Z&quot;</span>
-<span class="go">  labels:</span>
-<span class="go">    kops.k8s.io/cluster: k8s.infradev.io</span>
-<span class="go">  name: nodes</span>
-<span class="go">spec:</span>
-<span class="go">  image: kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09</span>
-<span class="go">  machineType: t2.medium</span>
-<span class="go">  maxSize: 2</span>
-<span class="go">  minSize: 2</span>
-<span class="go">  role: Node</span>
-<span class="go">  subnets:</span>
-<span class="go">  - eu-west-1a</span>
-</code></pre></div>
-
-<p>Let&rsquo;s do a quick dry-run to verify that our last edit will be correctly applied:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops update cluster
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Using cluster from kubectl context: k8s.infradev.io</span>
-
-<span class="go">I0228 09:26:01.246915   56008 executor.go:91] Tasks: 0 done / 55 total; 27 can run</span>
-<span class="go">I0228 09:26:02.859778   56008 executor.go:91] Tasks: 27 done / 55 total; 12 can run</span>
-<span class="go">I0228 09:26:03.455066   56008 executor.go:91] Tasks: 39 done / 55 total; 14 can run</span>
-<span class="go">I0228 09:26:05.044053   56008 executor.go:91] Tasks: 53 done / 55 total; 2 can run</span>
-<span class="go">I0228 09:26:05.160390   56008 executor.go:91] Tasks: 55 done / 55 total; 0 can run</span>
-<span class="go">Will create resources:</span>
-<span class="go">  IAMRolePolicy/additional.masters.k8s.infradev.io</span>
-<span class="go">  	Role                	name:masters.k8s.infradev.io id:AROAJRW7FGIS3QZOECW26</span>
-
-<span class="go">  IAMRolePolicy/additional.nodes.k8s.infradev.io</span>
-<span class="go">  	Role                	name:nodes.k8s.infradev.io id:AROAJ73WUQMRUWZQ4EYU4</span>
-
-<span class="go">Will modify resources:</span>
-<span class="go">  AutoscalingGroup/nodes.k8s.infradev.io</span>
-<span class="go">  	MinSize             	 1 -&gt; 2</span>
-<span class="go">  	MaxSize             	 1 -&gt; 2</span>
-
-<span class="go">Must specify --yes to apply changes</span>
-</code></pre></div>
-
-<p>That looks good to me, let&rsquo;s update our cluster:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops update cluster --yes
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">Using cluster from kubectl context: k8s.infradev.io</span>
-
-<span class="go">I0228 09:26:37.155218   56196 executor.go:91] Tasks: 0 done / 55 total; 27 can run</span>
-<span class="go">I0228 09:26:38.504246   56196 executor.go:91] Tasks: 27 done / 55 total; 12 can run</span>
-<span class="go">I0228 09:26:39.285901   56196 executor.go:91] Tasks: 39 done / 55 total; 14 can run</span>
-<span class="go">I0228 09:26:40.634271   56196 executor.go:91] Tasks: 53 done / 55 total; 2 can run</span>
-<span class="go">I0228 09:26:40.869591   56196 executor.go:91] Tasks: 55 done / 55 total; 0 can run</span>
-<span class="go">I0228 09:26:40.869646   56196 dns.go:140] Pre-creating DNS records</span>
-<span class="go">I0228 09:26:41.571104   56196 update_cluster.go:204] Exporting kubecfg for cluster</span>
-<span class="go">Wrote config for k8s.infradev.io to &quot;/Users/lcrisci/.kube/config&quot;</span>
-<span class="go">Kops has set your kubectl context to k8s.infradev.io</span>
-
-<span class="go">Cluster changes have been applied to the cloud.</span>
+Cluster changes have been applied to the cloud.
 
 
-<span class="go">Changes may require instances to restart: kops rolling-update cluster</span>
-</code></pre></div>
+Changes may require instances to restart: kops rolling-update cluster
+</code></pre><p>We don&rsquo;t need any rolling-update in this context so all we need to do is to be patient until the new node gets provisioned:</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kubectl get nodes -o wide
+</code></pre></div><pre><code class="language-console" data-lang="console">NAME                                          STATUS         AGE       EXTERNAL-IP
+ip-172-20-33-218.eu-west-1.compute.internal   Ready          1m        34.251.a.b
+ip-172-20-40-211.eu-west-1.compute.internal   Ready          15m       34.251.c.d
+ip-172-20-53-218.eu-west-1.compute.internal   Ready,master   17m       34.251.e.f
+</code></pre><p>So we&rsquo;ve got a new node as part of our default nodes ig which we can connect to via ssh:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">ssh -i ~/.ssh/kops_rsa admin@34.251.a.b
+</code></pre></div><pre><code class="language-console" data-lang="console">The authenticity of host '34.251.a.b (34.251.a.b)' can't be established.
+ECDSA key fingerprint is SHA256:6q+Fidr35O11vCU3AUgNrvtNTMWLvFrlWXxM01YKw3s.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '34.251.a.b' (ECDSA) to the list of known hosts.
 
-<p>We don&rsquo;t need any rolling-update in this context so all we need to do is to be patient until the new node gets provisioned:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kubectl get nodes -o wide
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">NAME                                          STATUS         AGE       EXTERNAL-IP</span>
-<span class="go">ip-172-20-33-218.eu-west-1.compute.internal   Ready          1m        34.251.a.b</span>
-<span class="go">ip-172-20-40-211.eu-west-1.compute.internal   Ready          15m       34.251.c.d</span>
-<span class="go">ip-172-20-53-218.eu-west-1.compute.internal   Ready,master   17m       34.251.e.f</span>
-</code></pre></div>
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
 
-<p>So we&rsquo;ve got a new node as part of our default nodes ig which we can connect to via ssh:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>ssh -i ~/.ssh/kops_rsa admin@34.251.a.b
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go">The authenticity of host &#39;34.251.a.b (34.251.a.b)&#39; can&#39;t be established.</span>
-<span class="go">ECDSA key fingerprint is SHA256:6q+Fidr35O11vCU3AUgNrvtNTMWLvFrlWXxM01YKw3s.</span>
-<span class="go">Are you sure you want to continue connecting (yes/no)? yes</span>
-<span class="go">Warning: Permanently added &#39;34.251.a.b&#39; (ECDSA) to the list of known hosts.</span>
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+_____________________________________________________________________
+WARNING! Your environment specifies an invalid locale.
+ This can affect your user experience significantly, including the
+ ability to manage packages. You may install the locales by running:
 
-<span class="go">The programs included with the Debian GNU/Linux system are free software;</span>
-<span class="go">the exact distribution terms for each program are described in the</span>
-<span class="go">individual files in /usr/share/doc/*/copyright.</span>
+   sudo apt-get install language-pack-en
+     or
+   sudo locale-gen en_GB.UTF-8
 
-<span class="go">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span>
-<span class="go">permitted by applicable law.</span>
-<span class="go">_____________________________________________________________________</span>
-<span class="go">WARNING! Your environment specifies an invalid locale.</span>
-<span class="go"> This can affect your user experience significantly, including the</span>
-<span class="go"> ability to manage packages. You may install the locales by running:</span>
-
-<span class="go">   sudo apt-get install language-pack-en</span>
-<span class="go">     or</span>
-<span class="go">   sudo locale-gen en_GB.UTF-8</span>
-
-<span class="go">To see all available language packs, run:</span>
-<span class="go">   apt-cache search &quot;^language-pack-[a-z][a-z]$&quot;</span>
-<span class="go">To disable this message for all users, run:</span>
-<span class="go">   sudo touch /var/lib/cloud/instance/locale-check.skip</span>
-<span class="go">_____________________________________________________________________</span>
-</code></pre></div>
-
-<p>A quick check of the uptime just because I love to run commands:<br></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>admin@ip-172-20-33-218:~$ uptime
-</code></pre></div>
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span></span><span class="go"> 08:31:15 up 3 min,  1 user,  load average: 0.19, 0.28, 0.13</span>
-</code></pre></div>
-
-<p>This node is definitely new and ready to run our containers</p>
-
-<p><br></p>
-
+To see all available language packs, run:
+   apt-cache search &quot;^language-pack-[a-z][a-z]$&quot;
+To disable this message for all users, run:
+   sudo touch /var/lib/cloud/instance/locale-check.skip
+_____________________________________________________________________
+</code></pre><p>A quick check of the uptime just because I love to run commands:<!-- raw HTML omitted --></p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">admin@ip-172-20-33-218:~$ uptime
+</code></pre></div><pre><code class="language-console" data-lang="console"> 08:31:15 up 3 min,  1 user,  load average: 0.19, 0.28, 0.13
+</code></pre><p>This node is definitely new and ready to run our containers</p>
+<!-- raw HTML omitted -->
 <h1 id="delete-the-cluster">Delete the cluster</h1>
-<div class="highlight"><pre><code class="language-text" data-lang="text"><span></span>kops delete cluster k8s.infradev.io --yes
-</code></pre></div>
-
-<h1 id="summary">Summary</h1>
-
-<p>I showed you what a simple default install of kops on AWS looked like.It&rsquo;s quite straightforward and kops is already very advanced on the AWS integration side.<br><br></p>
-
-<p>kops supports many different flags when creating a cluster, one of the most important for an advanced cluster being the <strong>&ndash;networking</strong> to install an overlay network and make it possible to define complex network policies and rules for interactions between different containers.<br><br></p>
-
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">kops delete cluster k8s.infradev.io --yes
+</code></pre></div><h1 id="summary">Summary</h1>
+<p>I showed you what a simple default install of kops on AWS looked like.It&rsquo;s quite straightforward and kops is already very advanced on the AWS integration side.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>kops supports many different flags when creating a cluster, one of the most important for an advanced cluster being the <strong>&ndash;networking</strong> to install an overlay network and make it possible to define complex network policies and rules for interactions between different containers.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>I&rsquo;m planning to write more advanced posts around kops and automation in general.They will also cover advanced networking setups and different HA/Autoscaling and Backups/Restores scenarios.</p>
-
-<p><br></p>
-
+<!-- raw HTML omitted -->
 <h1 id="resources">Resources</h1>
-
-<p>Slack: <a href="http://slack.k8s.io/">http://slack.k8s.io/</a> ( #kops )<br>
-Github: <a href="https://github.com/kubernetes/kops">https://github.com/kubernetes/kops</a><br>
+<p>Slack: <a href="http://slack.k8s.io/">http://slack.k8s.io/</a> ( #kops )<!-- raw HTML omitted -->
+Github: <a href="https://github.com/kubernetes/kops">https://github.com/kubernetes/kops</a><!-- raw HTML omitted -->
 Docs: <a href="https://github.com/kubernetes/kops/tree/master/docs">https://github.com/kubernetes/kops/tree/master/docs</a></p>
 
 
@@ -1094,13 +1001,13 @@ Docs: <a href="https://github.com/kubernetes/kops/tree/master/docs">https://gith
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="http://crisci.io/post/an-introduction-to-kubernetes/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://www.crisci.io/post/an-introduction-to-kubernetes/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="http://crisci.io/post/an-introduction-to-kubernetes/">An Introduction to Kubernetes</a>
+      <a href="https://www.crisci.io/post/an-introduction-to-kubernetes/">An Introduction to Kubernetes</a>
     </nav>
     
   </div>
@@ -1141,7 +1048,7 @@ Docs: <a href="https://github.com/kubernetes/kops/tree/master/docs">https://gith
 
 </div>
 </div>
-<script src="http://crisci.io/js/ui.js"></script>
+<script src="https://www.crisci.io/js/ui.js"></script>
 
 
 <script>

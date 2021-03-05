@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on Autodidact by nature</title>
+    <link>https://www.crisci.io/tags/golang/</link>
+    <description>Recent content in golang on Autodidact by nature</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2017. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 31 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://www.crisci.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to Kubernetes</title>
+      <link>https://www.crisci.io/post/why-golang-is-so-popular/</link>
+      <pubDate>Tue, 31 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.crisci.io/post/why-golang-is-so-popular/</guid>
+      <description> Go is easier to write than C, more performant and scalable than languages like python/ruby It&amp;rsquo;s a way in between ( compiled and perfomant like C and easier to write and manage than C ) Cross-compiling ( I can compile from my macosx to different architectures/OS ) procudes a static binary ready to run without dependencies ( Ideal for container apps ) It&amp;rsquo;s easy to write code for and forces you to write good code ( won&amp;rsquo;t let you run code that import unused libraries, Doesn&amp;rsquo;t use declare values, etc ) Major projects using it ( Kubernetes / CoreOS / Docker / Terraform / Vault / Consul )  </description>
+    </item>
+    
+  </channel>
+</rss>

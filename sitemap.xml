@@ -1,32 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://crisci.io/</loc>
+    <loc>https://www.crisci.io/</loc>
     <lastmod>2017-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/tags/devops/</loc>
     <lastmod>2017-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://crisci.io/post/an-introduction-to-kubernetes/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/tags/kops/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/tags/kubernetes/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/post/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/tags/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/post/using-kops-to-manage-your-kubernetes-clusters/</loc>
+    <lastmod>2017-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/post/an-introduction-to-kubernetes/</loc>
     <lastmod>2017-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://crisci.io/contact/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/post/why-golang-is-so-popular/</loc>
+    <lastmod>2017-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/tags/containers/</loc>
+    <lastmod>2017-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/tags/golang/</loc>
+    <lastmod>2017-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/contact/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.crisci.io/services/widgets/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/services/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/about/</loc>
+  </url><url>
+    <loc>https://www.crisci.io/topics/</loc>
   </url>
-  
-  <url>
-    <loc>http://crisci.io/services/widgets/</loc>
-  </url>
-  
-  <url>
-    <loc>http://crisci.io/about/</loc>
-  </url>
-  
 </urlset>
