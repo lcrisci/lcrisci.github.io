@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Books and philosophy notes from Laurent Crisci.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: system-ui, sans-serif;
+    color: #202124;
+    background: #fff;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  main {
+    max-width: 40rem;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+  }
+
+  h1, h2 {
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+
+  a {
+    color: #174ea6;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+</style>

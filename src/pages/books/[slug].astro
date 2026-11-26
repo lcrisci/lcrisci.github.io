@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { books } from '../../data/books';
+
+export function getStaticPaths() {
+  return books.map(book => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+---
+
+<Layout title={`${book.title} | Laurent Crisci`} description={`Notes on ${book.title}.`}>
+  <nav aria-label="Main"><a href="/">Home</a> · <a href="/books/">All books</a></nav>
+  <h1>{book.title}</h1>
+  <p>Notes coming soon.</p>
+</Layout>

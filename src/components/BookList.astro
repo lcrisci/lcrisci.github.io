@@ -1,0 +1,14 @@
+---
+import { books } from '../data/books';
+---
+
+{['Books', 'Philosophy'].map(category => (
+  <section aria-label={category}>
+    <h2>{category}</h2>
+    <ul>
+      {books.filter(book => book.category === category).map(book => (
+        <li><a href={`/books/${book.slug}/`}>{book.title}</a></li>
+      ))}
+    </ul>
+  </section>
+))}
