@@ -6,4 +6,6 @@ export const books = [
   { title: "Mémoires d’outre-tombe", slug: 'memoires-d-outre-tombe', category: 'Books' },
   { title: 'Mémoires de guerre', slug: 'memoires-de-guerre', category: 'Books' },
   { title: 'Nietzsche', slug: 'nietzsche', category: 'Philosophy' },
+  { title: 'Plato', slug: 'plato', category: 'Philosophy' },
+  { title: 'Hegel', slug: 'hegel', category: 'Philosophy' },
 ];

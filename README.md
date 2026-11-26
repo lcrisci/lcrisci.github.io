@@ -10,17 +10,25 @@ npm run dev
 Run `npm run build` to generate the static website in `dist/`, or
 `npm run preview` to preview that build.
 
-- `src/pages/index.astro`: home page.
+- `src/pages/index.astro`: home page with the centered Paris image.
+- `src/pages/knowledge.astro`: interests index linking to each category.
+- `src/pages/knowledge/[category].astro`: individual category pages.
+- `src/pages/links.astro`: GitHub, LinkedIn, and Business links.
+- `src/pages/contact.astro`: contact email displayed as plain, obfuscated text.
+- `src/data/interests.ts`: seven categories and their selections. Add entries with a `title`, optional `href`, and optional one-line `note`.
 - `src/data/books.ts`: book titles, page slugs, and categories, transcribed from `../books.md`.
-- `src/components/BookList.astro`: shared book links on the home and books pages.
+- `src/components/BookList.astro`: book links on the books index.
 - `src/pages/books/index.astro`: books index.
 - `src/pages/books/[slug].astro`: individual book pages; replace the temporary message with your notes.
 - `src/layouts/Layout.astro`: shared HTML and styles.
 - `public/CNAME`: existing custom domain, copied into the build.
 - `archive/`: all original site files, preserved unchanged and excluded from the new website build.
 
-The home page links directly to all six book pages and a Nietzsche page under Philosophy.
-The same list is also available at `/books/`.
+The top navigation links to Home, Knowledge, Links, and Contact. The Knowledge page
+links to separate pages for Music, Philosophy, Books, Movies, Anime, Videogames,
+and Computing. Book and philosophy entries link to
+individual notes pages. Categories without supplied selections show a short
+placeholder. The book and philosophy list is also available at `/books/`.
 
 ## GitHub Pages
 

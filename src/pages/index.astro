@@ -1,9 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BookList from '../components/BookList.astro';
 ---
 
 <Layout title="Laurent Crisci">
-  <h1>Laurent Crisci</h1>
-  <BookList />
+  <div class="home">
+    <img
+      src="/img/paris-1900.jpg"
+      alt="Panoramic view of Paris and the Eiffel Tower during the 1900 World's Fair"
+      width="800"
+      height="546"
+    />
+  </div>
 </Layout>
+
+<style>
+  .home {
+    text-align: center;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    width: 60rem;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+</style>

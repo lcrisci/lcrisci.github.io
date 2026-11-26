@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { interests } from '../data/interests';
+---
+
+<Layout title="Knowledge | Laurent Crisci" description="Laurent Crisci’s interests in music, philosophy, books, movies, anime, videogames, and computing.">
+  <h1>Knowledge</h1>
+  <p>Interests and favourites.</p>
+
+  <nav class="categories" aria-label="Interests">
+    <ul>
+      {interests.map(category => (
+        <li><a href={`/knowledge/${category.id}/`}>{category.title}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+</Layout>
+
+<style>
+  .categories ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+
+  .categories li {
+    margin: 0;
+  }
+
+</style>
